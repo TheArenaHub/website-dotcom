@@ -7,4 +7,14 @@
       "31:25:DB:13:BE:D6:6C:98:56:88:04:B0:2A:AC:82:E0:92:10:A4:CA:50:FE:C9:55:AF:5D:8B:96:92:05:CC:8A"
     ]
   }
+},
+{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.thearenahub.hestia",
+    "sha256_cert_fingerprints": [
+      "61:77:BE:62:76:FF:1F:1C:42:6B:85:B5:02:56:5B:F6:2E:64:B1:5C:4A:72:11:80:47:08:FB:43:49:A5:4F:A7"
+    ]
+  }
 }]
