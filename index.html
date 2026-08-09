@@ -727,11 +727,17 @@ a { color: inherit; text-decoration: none; }
       <!-- 2026-08-09: switched from full-bleed object-fit:cover (was cropping the
            right edge off the Trophy Hub stat card, since Dashboard_UI.png is a tall
            portrait phone capture forced into a wide card column) to the same
-           uncropped phone-mock treatment already proven on Hestia below. -->
+           uncropped phone-mock treatment already proven on Hestia below.
+           UPDATED same day, later: swapped assets/Dashboard_UI.png for
+           lite-dashboard-mobile.png — the real device-emulated mobile capture taken
+           for the Play Store submission (1082x2402, unpadded original, not the
+           Play_Store_Ready aspect-ratio-padded version). Jon's call: standardise every
+           product card on this style of capture going forward (Athena/Harmonia to
+           follow the same pattern once their screens exist). -->
       <article class="product-card" id="arena-lite">
         <div class="product-card__media product-card__media--phone">
           <div class="phone-mock">
-            <img src="assets/Dashboard_UI.png" alt="Arena Lite dashboard — Trophy Hub live snapshot with Capture Evidence, Process Report, Safeguarding and Daily Register">
+            <img src="assets/lite-dashboard-mobile.png" alt="Arena Lite dashboard — Trophy Hub live snapshot with Capture Evidence, Process Report, Safeguarding and Daily Register">
           </div>
         </div>
         <div class="product-card__body">
@@ -769,21 +775,24 @@ a { color: inherit; text-decoration: none; }
            the wrong frame for it too.
            UPDATED same day: swapped assets/hestia-screen-dashboard.png (570x418,
            older single-child Jess-only auto-crop) for hestia-dashboard-desktop.png
-           (1522x965, the current multi-child Jess/Mel/Ben dashboard), sourced from
-           Jon's own Drive capture (Screen Shots (Desktop)\Hestia_Dashboard_UI.PNG),
-           copied via marketing\screenshots\ per this environment's Drive-mount
-           limitation — see WEBSITE_MASTER_REFERENCE.md §6. -->
+           (1522x965, the current multi-child Jess/Mel/Ben dashboard) — later found to
+           be broken live under that filename, fixed by pointing at Hestia_Dashboard_UI.PNG,
+           the name it actually got uploaded under.
+           UPDATED same day, later still: replaced the desktop/browser capture entirely.
+           Jon's call, comparing it directly against the new Play Store mobile captures —
+           the desktop version has real dead space (browser chrome, margins, scrollbar)
+           where the mobile capture is the app itself edge-to-edge, and having Lite shown
+           as "an app on your phone" while Hestia showed as "a website in a browser" sent
+           the wrong signal now that Hestia ships as an Android app too. Switched to the
+           same phone-mock treatment as Lite, image is hestia-dashboard-mobile.png (the
+           unpadded 1082x2402 original from the Play Store capture, not the
+           Play_Store_Ready aspect-ratio-padded version — those side bars are a Google
+           compliance artifact, not a design choice, and would look like a stray border
+           here). Standard pattern going forward for every product card. -->
       <article class="product-card product-card--reverse" id="arena-hestia">
-        <!-- 2026-08-09, later same day: image was broken live (confirmed on desktop AND
-             Android) — src pointed at assets/hestia-dashboard-desktop.png, a filename that
-             was never actually committed. The file that IS live in the repo is
-             Hestia_Dashboard_UI.PNG (Jon's original Drive filename, uploaded directly,
-             case-sensitive on Vercel unlike Windows) — same correct image content, src
-             corrected to match instead of re-uploading again. -->
         <div class="product-card__media product-card__media--phone">
-          <div class="browser-mock">
-            <div class="browser-mock__bar"><span></span><span></span><span></span></div>
-            <img src="assets/Hestia_Dashboard_UI.PNG" alt="Arena Hestia Dashboard — Jess, Mel and Ben's household view: Plan the Day, Add evidence, Routine and mood, Child card">
+          <div class="phone-mock">
+            <img src="assets/hestia-dashboard-mobile.png" alt="Arena Hestia Dashboard — Jess, Mel and Ben's household view: Plan the Day, Add evidence, Routine and mood, Child card">
           </div>
         </div>
         <div class="product-card__body">
