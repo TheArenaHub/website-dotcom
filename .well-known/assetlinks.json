@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.thearenahub.lite",
+    "sha256_cert_fingerprints": [
+      "31:25:DB:13:BE:D6:6C:98:56:88:04:B0:2A:AC:82:E0:92:10:A4:CA:50:FE:C9:55:AF:5D:8B:96:92:05:CC:8A"
+    ]
+  }
+}]
