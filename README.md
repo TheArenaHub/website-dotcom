@@ -24,7 +24,7 @@ Backend: Google Apps Script (ENGINE_LIBRARY v1.8.0)
 Ledger: Google Sheets (STUDENT_VAULT — per-school sovereign deployment, Lite only)
 Ingestor: Cloud Run (arena-hub-ingestor, europe-west2)
 AI: Gemini 2.0 Flash (taxonomy matching via /suggest endpoint)
-Hosting: Vercel (Production)
+Hosting:    Vercel (Production)
 ```
 
 ## Pages
