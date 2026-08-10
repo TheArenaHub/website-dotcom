@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+  Arena Hestia — Log In
+  File:    hestia-login.html
+  Version: 1.0.0
+  Session: 2026-08-10. NEW FILE — hestia.html had no login entry point at
+           all (confirmed: no nav link, no page). Modelled directly on
+           login.html (Arena Lite's equivalent, v2.0.0) — same shared-portal
+           pattern: no per-customer URL exists, tenant scoping happens via
+           the customer's own signed-in Google account. Portal URL sourced
+           from DOCUMENT_REGISTRY.json → HESTIA_PORTAL.web_app_url
+           (deployment AKfycbwdh...8k8Ew, confirmed live, V41+ as of
+           2026-08-06).
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in — Arena Hestia</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --navy:#1B263B; --gold:#C5A059; --brown:#3A2822; --light:#F7F4EF; --mid:#EDE9E3; --muted:#6B7280; }
+body {
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  background: var(--light); color: var(--brown);
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 24px;
+}
+.card {
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 4px 28px rgba(58,40,34,.10);
+  padding: 40px 36px; width: 100%; max-width: 440px;
+}
+.logo-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+.logo-icon {
+  width: 40px; height: 40px; background: var(--brown);
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+}
+.brand-name { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; }
+.brand-name span { color: var(--gold); }
+h1 { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; margin-bottom: 8px; }
+.sub { font-size: .9rem; color: var(--muted); margin-bottom: 28px; line-height: 1.5; }
+.info-box {
+  background: var(--light); border-radius: 10px;
+  padding: 18px 20px; margin-bottom: 24px;
+  border-left: 4px solid var(--gold);
+}
+.info-box h3 { font-size: .9rem; margin-bottom: 8px; }
+.info-box p  { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+.btn {
+  display: block; width: 100%; background: var(--brown); color: #fff;
+  font-weight: 700; font-size: 1rem; padding: 14px; text-align: center;
+  border-radius: 10px; border: none; cursor: pointer; text-decoration: none;
+  font-family: 'Source Sans 3', sans-serif; transition: background .15s;
+}
+.btn:hover { background: #4A342C; }
+.divider { border: none; border-top: 1px solid var(--mid); margin: 24px 0 20px; }
+.help { font-size: .8rem; color: var(--muted); text-align: center; line-height: 1.6; }
+.help a { color: var(--brown); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo-bar">
+    <div class="logo-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M12 3L4 7.5V16.5L12 21L20 16.5V7.5L12 3Z" stroke="#C5A059" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span class="brand-name">Arena <span>Hestia</span></span>
+  </div>
+
+  <h1>Log in to Arena Hestia</h1>
+  <p class="sub">Hestia opens in your own Google account — sign in with the same account you activated with, and your family workspace is right there.</p>
+
+  <div class="info-box">
+    <h3>How this works</h3>
+    <p>Hestia is one shared portal — there's no separate password or personal link to keep track of. Open it below, and if your browser is signed into the Google account you activated with, your Evidence Vault loads automatically.</p>
+  </div>
+
+  <a class="btn" href="https://script.google.com/macros/s/AKfycbwdh_qPKnaEv7AKqHpBHik51l6kQ1T_ptVt0Va_gYtuoACP9syILbdN020ER3tm08k8Ew/exec">Open Arena Hestia →</a>
+
+  <hr class="divider">
+  <div class="help">
+    Signed into the wrong Google account? Switch accounts in your browser, then reopen the link above.<br>
+    Can't find your licence key? Email <a href="mailto:hestia@thearenahub.co.uk">hestia@thearenahub.co.uk</a><br>
+    Don't have an account? <a href="hestia-signup.html">Start a free trial →</a>
+  </div>
+</div>
+
+</body>
+</html>
