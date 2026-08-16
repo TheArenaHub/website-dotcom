@@ -4,8 +4,19 @@
 
 <!-- ============================================================
   Arena Lite — Product Page (was index.html — S146 site restructure)
-  Version:   2.2.0
-  Session:   S146 — 31 July 2026. Cloned from the former index.html (v2.1.1)
+  Version:   2.2.1
+  Session:   S159 continued — 16 August 2026. Website redesign plan v1.0,
+             Q2 correction: nav's "Our Story" link and the footer's "About"
+             link both previously pointed at inconsistent targets (nav →
+             the new generic story.html; footer → the external
+             .co.uk/company.html, which turned out on inspection to be
+             Arena Main's own AP-school product page, not a company/about
+             page at all — wrong target either way). Both now point to the
+             new lite-about.html — a dedicated, professionally-toned About
+             page built specifically for Lite's practitioner audience (see
+             that file's own header for content sourcing). Nav label
+             changed from "Our Story" to "About" to match.
+  Prior:     S146 — 31 July 2026. Cloned from the former index.html (v2.1.1)
              as part of the thearenahub.com family-landing restructure: index.html
              is now a Lite/Hestia chooser page, this file is Lite's dedicated
              sales page. Added: PRICING section with working Stripe checkout
@@ -2221,9 +2232,14 @@ a {
 .checkout-modal__status.is-visible { display: block; }
 
 </style>
+<link rel="stylesheet" href="assets/arena-shared-ui.css">
 </head>
 
 <body>
+
+<a href="index.html" class="floating-home" aria-label="Arena Hub home">
+  <img src="assets/hub-crest-avatar.png" alt="">
+</a>
 
 <!-- ════════════════════════════════════════════════════
   NAVIGATION
@@ -2240,7 +2256,7 @@ a {
       <ul class="nav__links" role="list">
         <li><a href="#workflow">How It Works</a></li>
         <li><a href="#trust">Data &amp; Privacy</a></li>
-        <li><a href="https://www.thearenahub.co.uk/company.html">About</a></li>
+        <li><a href="lite-about.html">About</a></li>
         <li><a href="https://www.thearenahub.co.uk/platform.html">Full Platform</a></li>
       </ul>
 
@@ -2808,7 +2824,7 @@ a {
       <nav class="footer__links" aria-label="Footer navigation">
         <a href="signup.html">Free Trial</a>
         <a href="https://www.thearenahub.co.uk/platform.html">Full Platform</a>
-        <a href="https://www.thearenahub.co.uk/company.html">About</a>
+        <a href="lite-about.html">About</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
       </nav>
