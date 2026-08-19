@@ -694,6 +694,10 @@ a { color: inherit; text-decoration: none; }
 </section>
 
 <!-- PRICING -->
+<!-- Populated only by marketing-data-loader.js when real ACTIVE testimonials
+     exist — stays hidden and empty until then, see arena-shared-ui.css -->
+<section class="testimonials" id="marketingTestimonials" style="display:none"></section>
+
 <section class="pricing" id="pricing" aria-labelledby="pricing-title">
   <div class="container">
     <div class="pricing__header reveal">
@@ -902,6 +906,8 @@ function submitCheckout() {
   });
 }
 </script>
+
+<script src="marketing-data-loader.js"></script>
 
 </body>
 </html>
