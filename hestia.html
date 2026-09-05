@@ -282,6 +282,25 @@ a { color: inherit; text-decoration: none; }
 .showcase__card-label h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; color: var(--h-ink); margin-bottom: 0.3rem; }
 .showcase__card-label p { font-size: var(--text-sm); color: var(--h-muted); line-height: 1.55; }
 
+/* ── Watch (real product video, added post-launch — 3 marketing MP4s from F:\marketing\Videos) ── */
+.watch-video { background: var(--h-bg); padding: var(--section-pad) 0; }
+.watch-video__header { text-align: center; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.watch-video__title { font-family: var(--font-display); font-size: var(--text-4xl); font-weight: 700; color: var(--h-ink); line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 0.75rem; }
+.watch-video__subtitle { font-size: var(--text-lg); font-weight: 300; color: var(--h-muted); max-width: 56ch; margin-inline: auto; line-height: 1.65; }
+.watch-video__frame { max-width: 380px; margin-inline: auto; }
+.watch-video__frame video { width: 100%; aspect-ratio: 443 / 960; border-radius: var(--radius-lg); box-shadow: 0 20px 50px rgba(0,0,0,0.12), 0 4px 14px rgba(0,0,0,0.06); background: #000; object-fit: cover; }
+.watch-video__caption { text-align: center; font-size: var(--text-sm); color: var(--h-muted); margin-top: 1.1rem; max-width: 48ch; margin-inline: auto; line-height: 1.6; }
+
+/* ── Showcase — Routine & Mood: Capture then Insight video story (added post-launch) ── */
+.showcase__videos { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; max-width: 780px; margin-inline: auto; }
+@media (max-width: 720px) { .showcase__videos { grid-template-columns: 1fr; max-width: 380px; } }
+.showcase__video-card { position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--h-card-border); box-shadow: 0 20px 50px rgba(0,0,0,0.08), 0 4px 14px rgba(0,0,0,0.05); background: var(--white); }
+.showcase__video-card video { width: 100%; display: block; aspect-ratio: 443 / 960; object-fit: cover; background: #000; }
+.showcase__video-step { position: absolute; top: 0.9rem; left: 0.9rem; z-index: 2; background: rgba(27,38,59,0.85); color: var(--h-accent); font-family: var(--font-display); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.35rem 0.75rem; border-radius: 20px; }
+.showcase__video-label { padding: 1.1rem 1.4rem 1.35rem; }
+.showcase__video-label h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; color: var(--h-ink); margin-bottom: 0.3rem; }
+.showcase__video-label p { font-size: var(--text-sm); color: var(--h-muted); line-height: 1.55; }
+
 /* ── Contrast ── */
 .contrast { background: var(--white); padding: var(--section-pad) 0; }
 .contrast__header { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
@@ -551,6 +570,29 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
+<!-- WATCH — real product video (added post-launch, F:\marketing\Videos) -->
+<section class="watch-video" aria-labelledby="watch-video-headline">
+  <div class="container">
+    <div class="watch-video__header reveal">
+      <span class="eyebrow eyebrow--dark">See It For Real</span>
+      <h2 class="watch-video__title" id="watch-video-headline">Watch Hestia in action.</h2>
+      <p class="watch-video__subtitle">No mockups, no staged demo — this is the real product, running exactly as it does on a parent's own phone.</p>
+    </div>
+    <div class="watch-video__frame reveal reveal--delay-1">
+      <video
+        controls
+        playsinline
+        preload="metadata"
+        poster="assets/hestia-video-poster-01-walkthrough.jpg"
+        aria-label="Product walkthrough of Arena Hestia — the dashboard, Plan the Day, Add Evidence and Routine and Mood screens">
+        <source src="https://storage.googleapis.com/arena-hub-marketing-assets/Hestia_Marketing_01_Product_Walkthrough_MASTER.mp4" type="video/mp4">
+        Your browser doesn't support embedded video. <a href="https://storage.googleapis.com/arena-hub-marketing-assets/Hestia_Marketing_01_Product_Walkthrough_MASTER.mp4">Download the Hestia product walkthrough</a> instead.
+      </video>
+      <p class="watch-video__caption">A full walkthrough of Hestia's real screens — planning the day, capturing evidence, and tracking routine and mood.</p>
+    </div>
+  </div>
+</section>
+
 <!-- SHOWCASE — real app screenshots (S148 continued, 2026-08-05) -->
 <section class="showcase" aria-labelledby="showcase-headline">
   <div class="container">
@@ -575,6 +617,36 @@ a { color: inherit; text-decoration: none; }
       <div class="showcase__card reveal">
         <img src="assets/hestia-screen-child-card.png" alt="Hestia Child Card screen — child profile, key stage, notes, journey and SECO export">
         <div class="showcase__card-label"><h3>One card per child</h3><p>Everything about each child in one place — details, journey, and controlled sharing when it's needed.</p></div>
+      </div>
+    </div>
+
+    <!-- Routine & Mood video story — added post-launch, F:\marketing\Videos -->
+    <div class="showcase__videos reveal reveal--delay-1" role="list" aria-label="Routine and mood, in two parts: capture then insight">
+      <div class="showcase__video-card" role="listitem">
+        <span class="showcase__video-step" aria-hidden="true">Step 1 · Capture</span>
+        <video
+          controls
+          playsinline
+          preload="metadata"
+          poster="assets/hestia-video-poster-02-capture.jpg"
+          aria-label="Recording a routine and mood check-in in Arena Hestia">
+          <source src="https://storage.googleapis.com/arena-hub-marketing-assets/Hestia_Marketing_02_Routine_Mood_CAPTURE_MASTER.mp4" type="video/mp4">
+          Your browser doesn't support embedded video. <a href="https://storage.googleapis.com/arena-hub-marketing-assets/Hestia_Marketing_02_Routine_Mood_CAPTURE_MASTER.mp4">Download this clip</a> instead.
+        </video>
+        <div class="showcase__video-label"><h3>Log a check-in</h3><p>A quick moment to record mood, energy and how the day's actually going.</p></div>
+      </div>
+      <div class="showcase__video-card" role="listitem">
+        <span class="showcase__video-step" aria-hidden="true">Step 2 · Insight</span>
+        <video
+          controls
+          playsinline
+          preload="metadata"
+          poster="assets/hestia-video-poster-03-insight.jpg"
+          aria-label="Arena Hestia surfacing patterns from accumulated routine and mood history">
+          <source src="https://storage.googleapis.com/arena-hub-marketing-assets/Hestia_Marketing_03_Routine_Mood_INSIGHT_MASTER.mp4" type="video/mp4">
+          Your browser doesn't support embedded video. <a href="https://storage.googleapis.com/arena-hub-marketing-assets/Hestia_Marketing_03_Routine_Mood_INSIGHT_MASTER.mp4">Download this clip</a> instead.
+        </video>
+        <div class="showcase__video-label"><h3>See the pattern</h3><p>Once there's a history to draw on, Hestia surfaces what those check-ins are actually showing.</p></div>
       </div>
     </div>
   </div>
