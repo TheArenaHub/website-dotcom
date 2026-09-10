@@ -4,7 +4,8 @@
     "namespace": "android_app",
     "package_name": "com.thearenahub.lite",
     "sha256_cert_fingerprints": [
-      "31:25:DB:13:BE:D6:6C:98:56:88:04:B0:2A:AC:82:E0:92:10:A4:CA:50:FE:C9:55:AF:5D:8B:96:92:05:CC:8A"
+      "31:25:DB:13:BE:D6:6C:98:56:88:04:B0:2A:AC:82:E0:92:10:A4:CA:50:FE:C9:55:AF:5D:8B:96:92:05:CC:8A",
+      "DD:28:4F:81:AE:CD:30:71:25:DA:78:1A:01:2F:70:DC:E4:C2:65:16:4D:29:FD:01:61:88:62:21:79:A5:7B:F4"
     ]
   }
 },
