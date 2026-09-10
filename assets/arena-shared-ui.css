@@ -1,0 +1,186 @@
+/* ============================================================
+   File:    arena-shared-ui.css
+   Purpose: Shared, additive-only UI layer for the arena-lite-com
+            site (index.html, hestia.html, lite.html, and any new
+            pages built on the same navy/gold token set).
+   Version: 1.0.0 (S159 continued, 2026-08-16)
+   Owner:   The Arena Hub Ltd
+
+   DESIGN: deliberately additive, not a refactor. Each page still
+   owns its own full <style> block with the existing --navy/--gold
+   token set (kept, unchanged, for zero regression risk). This file
+   is linked AFTER that inline block, so on equal CSS specificity it
+   wins the cascade — every rule below either targets a class that
+   does not exist yet on any page (.floating-home, .btn--raised) or
+   layers an ADDITIONAL box-shadow/transform onto an existing class
+   without removing anything that class already does.
+
+   Contains: 1) raised/pressed button treatment (Jon's approved
+   direction, 2026-08-16 — "I like the 3d style... as long as it
+   reacts when pressed"). 2) floating home button — always visible,
+   every viewport, unlike the existing .nav__back link which the
+   2026-08-15 mobile-nav fix hides below 640px. Uses the existing
+   hub-crest-avatar.png asset, no new image needed.
+   ============================================================ */
+
+:root {
+  --gold-deep: #8B6914;
+  --navy-deep-shadow: rgba(20, 30, 46, 0.35);
+}
+
+/* ── Raised / pressed buttons ──
+   Adds a bottom ledge shadow so the button visually sits above the
+   page, and swaps to an inset "pressed" look on :active/:focus so it
+   reads as physically depressed, not just colour-flipped. No
+   competitor in Arena's own market research uses this — it's a
+   deliberate tactile differentiator, not a category-standard move. */
+
+.btn--primary {
+  box-shadow: 0 2px 12px rgba(197, 160, 89, 0.25), 0 4px 0 var(--gold-deep);
+  transform: translateY(0);
+}
+.btn--primary:hover {
+  box-shadow: 0 4px 18px rgba(197, 160, 89, 0.35), 0 4px 0 var(--gold-deep);
+  transform: translateY(-1px);
+}
+.btn--primary:active {
+  box-shadow: inset 0 2px 4px rgba(20, 30, 46, 0.3), 0 1px 0 var(--gold-deep);
+  transform: translateY(3px);
+  transition: box-shadow 0.08s var(--ease, ease), transform 0.08s var(--ease, ease);
+}
+
+.btn--ghost {
+  box-shadow: 0 3px 0 rgba(255, 255, 255, 0.15);
+}
+.btn--ghost:hover {
+  box-shadow: 0 3px 0 rgba(255, 255, 255, 0.25);
+}
+.btn--ghost:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+  transform: translateY(3px);
+  transition: box-shadow 0.08s ease, transform 0.08s ease;
+}
+
+.btn--outline-navy {
+  box-shadow: 0 3px 0 var(--border-light, rgba(0, 0, 0, 0.12));
+}
+.btn--outline-navy:hover {
+  box-shadow: 0 3px 0 rgba(197, 160, 89, 0.3);
+}
+.btn--outline-navy:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12);
+  transform: translateY(3px);
+  transition: box-shadow 0.08s ease, transform 0.08s ease;
+}
+
+/* ── Floating home button ──
+   Fixed, circular, bottom-left, present on every screen size and
+   scroll position — the "never get lost" affordance. Deliberately
+   separate from .nav__back (which still exists in the top bar on
+   desktop) rather than replacing it, so desktop users keep both the
+   labelled nav link and this quieter persistent anchor; mobile users
+   who lose .nav__back below 640px keep this as their only-but-
+   sufficient way home. */
+
+.floating-home {
+  position: fixed;
+  left: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 150;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--navy, #1B263B);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 0 var(--navy-deep, #141E2E), 0 6px 16px rgba(20, 30, 46, 0.35);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.floating-home:hover {
+  box-shadow: 0 4px 0 var(--navy-deep, #141E2E), 0 8px 20px rgba(20, 30, 46, 0.4);
+  transform: translateY(-1px);
+}
+.floating-home:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  transform: translateY(3px);
+  transition: box-shadow 0.08s ease, transform 0.08s ease;
+}
+.floating-home img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  border-radius: 0;
+}
+@media (max-width: 640px) {
+  .floating-home { width: 44px; height: 44px; left: 0.85rem; bottom: 0.85rem; }
+  .floating-home img { width: 26px; height: 26px; }
+}
+
+/* ── Testimonials (v1.1.0 addendum, S159 continued, 2026-08-16) ──
+   Populated only by marketing-data-loader.js from live TESTIMONIALS data —
+   the container ships as an empty, hidden <section> in the HTML (see
+   #marketingTestimonials on hestia.html/lite.html) and only gets un-hidden
+   once real ACTIVE rows exist. No placeholder/"coming soon" state by design
+   — see ARENA_MARKETING_CMS_ARCHITECTURE_STUB.md Section 3a. */
+
+.testimonials {
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+}
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.testimonials__card {
+  background: var(--white, #fff);
+  border: 1px solid var(--border-light, rgba(0, 0, 0, 0.1));
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 0;
+}
+.testimonials__quote {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--body-text, #2a2a2a);
+  margin: 0 0 0.9rem;
+}
+.testimonials__attribution {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy, #1B263B);
+}
+.testimonials__attribution span {
+  display: block;
+  font-weight: 400;
+  color: var(--muted, #6b7280);
+  margin-top: 0.15rem;
+}
+
+/* ── Google Play store badge (v1.2.0 addendum, 2026-09-10) ──
+   Arena Lite passed Google Play review and is live in Production
+   (com.thearenahub.lite). Official "Get it on Google Play" badge image,
+   linked directly from Google's own hosted brand-asset URL (not
+   self-hosted, so it always matches Google's current branding/guidelines).
+   Only added where Lite is referenced — Hestia has not passed review yet,
+   do not add this badge to any Hestia page/card until it has. */
+
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s var(--ease, ease), opacity 0.2s var(--ease, ease);
+}
+.store-badge img {
+  height: 54px;
+  width: auto;
+  display: block;
+}
+.store-badge:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+.store-badge--sm img {
+  height: 40px;
+}
