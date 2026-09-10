@@ -635,9 +635,14 @@ a { color: inherit; text-decoration: none; }
 }
 
 </style>
+<link rel="stylesheet" href="assets/arena-shared-ui.css">
 </head>
 
 <body>
+
+<a href="index.html" class="floating-home" aria-label="Arena Hub home">
+  <img src="assets/hub-crest-avatar.png" alt="">
+</a>
 
 <!-- ════════════════════════════════════════════════════
   NAVIGATION
@@ -663,7 +668,7 @@ a { color: inherit; text-decoration: none; }
         </li>
         <li><a href="#technology">Technology</a></li>
         <li><a href="#institutional">For Institutions</a></li>
-        <li><a href="https://www.thearenahub.co.uk/company.html">About</a></li>
+        <li><a href="story.html">Our Story</a></li>
       </ul>
 
       <div class="nav__cta">
@@ -761,8 +766,11 @@ a { color: inherit; text-decoration: none; }
             <li>Sovereign practitioner-owned records</li>
           </ul>
           <p class="product-card__note">Built for practitioners working across tutoring, EOTAS, Alternative Provision, SEND, SEMH and other learning contexts.</p>
-          <div class="product-card__foot">
+          <div class="product-card__foot" style="display:flex; align-items:center; gap:1.25rem; flex-wrap:wrap;">
             <a href="lite.html" class="btn btn--primary">Explore Arena Lite</a>
+            <a href="https://play.google.com/store/apps/details?id=com.thearenahub.lite" class="store-badge store-badge--sm" target="_blank" rel="noopener" aria-label="Get Arena Lite on Google Play">
+              <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="135" height="40">
+            </a>
           </div>
         </div>
       </article>
