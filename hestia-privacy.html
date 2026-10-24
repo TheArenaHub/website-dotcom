@@ -142,16 +142,16 @@ footer a:hover { text-decoration: underline; }
 <div class="page-header">
   <h1>Privacy Policy — Arena Hestia</h1>
   <p>How The Arena Hub Ltd collects, uses, and protects your family's information.</p>
-  <div class="updated">Last updated: September 2026</div>
+  <div class="updated">Last updated: 24 October 2026</div>
 </div>
 
 <!-- CONTENT -->
 <div class="content-wrap">
 
-  <h2>1. Who We Are</h2>
+<h2>1. Who We Are</h2>
   <p>The Arena Hub Ltd ("Arena Hub", "we", "us") is a company registered in England and Wales. We provide Arena Hestia, a cloud-based daily planning and evidence platform designed for parents and carers of SEMH (Social, Emotional and Mental Health) children learning at home. Company No. CH#<span data-config="company_number">17086105</span>. Our contact address for all data-related matters is <strong><a href="mailto:data-protection@thearenahub.co.uk" data-config="email_data_protection" data-config-href-prefix="mailto:" data-config-href-key="email_data_protection">data-protection@thearenahub.co.uk</a></strong>. For general Hestia queries: <strong><a href="mailto:hestia@thearenahub.co.uk">hestia@thearenahub.co.uk</a></strong>.</p>
 
-  <h2>2. Data Controller and Data Processor</h2>
+<h2>2. Data Controller and Data Processor</h2>
   <p>Under UK GDPR, the legal roles are important to understand clearly:</p>
   <div class="callout">
     <strong>Data Controller:</strong> The subscribing parent or carer using Arena Hestia. As the Data Controller, you determine the purposes and means of processing your child's data within the platform.<br><br>
@@ -160,45 +160,70 @@ footer a:hover { text-decoration: underline; }
   <p>Your child's data — including plan entries, evidence records, routine and mood check-ins, and safeguarding entries — is processed and stored exclusively within your own Google Workspace account. <strong>Arena Hub never accesses, stores, or processes your child's personally identifiable information (PII) on our own systems at rest.</strong></p>
   <p><strong>A note on how this differs from a school-based product:</strong> unlike Arena Lite (used by practitioners acting in a professional capacity on behalf of a school), Arena Hestia is used by you, personally, for your own family. UK GDPR's "household exemption" (Article 2(2)(c)) can mean your own day-to-day use of the app for purely personal or family purposes falls outside GDPR's scope entirely. That exemption does not extend to us — Arena Hub Ltd remains fully bound by UK GDPR as a commercial provider of the service regardless of how the exemption applies to your own use. We describe our obligations in full below.</p>
 
-  <h2>3. What Data We Collect</h2>
+<h2>3. What Data We Collect</h2>
   <p>When you subscribe to or use Arena Hestia, we collect and hold the following information about you as the subscribing parent or carer:</p>
   <p><strong>Account data:</strong> Your email address, your full name, and your household or family name. This is provided by you during the subscription checkout process.</p>
   <p><strong>Licence data:</strong> Your unique Arena Hestia licence key, subscription plan, subscription start date, and subscription status.</p>
   <p><strong>Payment data:</strong> Payment processing is handled entirely by Stripe, Inc. We do not store payment card numbers or full payment details on our systems. Stripe retains payment data in accordance with their own privacy policy and PCI DSS obligations.</p>
-  <p><strong>In full and open terms — what the app itself touches:</strong> when you use Hestia's features (Plan the Day, Add Evidence, Routine and Mood, Child Card, Safeguarding), the content you enter — including your child's name, date of birth, key stage, plan entries, evidence photos/videos/audio, routine and mood check-ins, and safeguarding notes — passes through our Cloud Run infrastructure as part of writing it to your own Google Workspace. We do not retain a copy of this content on our own systems once that write completes (see Section 7). We are describing this plainly rather than narrowly, because it involves your child's data and we think you're entitled to the fullest picture, not the minimum required disclosure.</p>
+  <p><strong>In full and open terms — what the app itself touches:</strong> when you use Hestia's features (Plan the Day, Add Evidence, Routine and Mood, Child Card, Safeguarding), the content you enter — including your child's name, date of birth, key stage, plan entries, evidence photos/videos/audio, routine and mood check-ins and safeguarding notes — is written by the app, signed in as you, to a spreadsheet and folders in your own Google Drive. Arena Hub's own server only receives what a feature needs: your licence details, the export rules for a recipient, and the limited content sent to the AI features (Section 7). We do not keep a copy of your child's records on our own systems (Section 10). We describe this plainly rather than narrowly, because it involves your child's data and you are entitled to the fullest picture, not the minimum required disclosure.</p>
 
-  <h2>4. How We Use Your Data</h2>
+<h2>4. How We Use Your Data</h2>
   <p>We use your account data for the following purposes only:</p>
   <p><strong>Licence validation:</strong> To verify that you hold a valid, active Arena Hestia subscription when you activate or use the platform.</p>
   <p><strong>Account management:</strong> To manage your subscription, process renewals, and handle requests to change or cancel your account.</p>
+  <p><strong>AI features:</strong> To provide Plan the Day suggestions and local learning ideas when you use them (Section 7).</p>
   <p><strong>Product and service communications:</strong> To notify you of important updates to the platform, changes to these terms, or critical security notices. We do not send marketing emails without your explicit opt-in consent.</p>
 
-  <h2>5. Legal Basis for Processing</h2>
+  <h2>5. Google User Data: What We Access and Why</h2>
+  <p>When you sign in, Google asks you to allow "Arena Hub" the following permissions. Each one is used only for the purpose shown:</p>
+  <p><strong>See, edit, create and delete only the specific Google Drive files that you use with this app</strong> (<code>drive.file</code>) — to create your Hestia folders and household spreadsheet (which holds your child's records, routine and mood logs, evidence log and audit log) in your Drive, to save evidence files you upload, and to create plans and evidence packs and save them as PDF. The app can only see files it created or that you selected; it cannot see or change anything else in your Drive.</p>
+  <p><strong>Connect to an external service</strong> (<code>script.external_request</code>) — to contact Arena Hub's own server (Google Cloud Run, London) to check your licence, apply the export rules for each recipient and provide the AI features (Section 7); and to call Google's own Drive service to save a document the app has just created as a PDF in your Drive. Every request to our server is signed (Section 6).</p>
+  <p><strong>Your Google account email address</strong> (<code>userinfo.email</code>) — to match the signed-in Google account to the licence issued to that email address.</p>
+  <p>We do not request access to Gmail, your contacts, your calendar, your other Google Sheets or Docs, or the rest of your Google Drive.</p>
+
+  <h2>6. How We Protect Your Data</h2>
+  <p><strong>Your child's records stay in your own Google account.</strong> Child profiles, evidence, safeguarding records, routine and mood logs, plans and exports are kept in a spreadsheet and folders inside your own Google Drive. We do not copy them into a database of our own.</p>
+  <p><strong>Narrowest Drive permission.</strong> Arena Hestia uses Google's <code>drive.file</code> permission only, so it can reach just the files it created or that you chose.</p>
+  <p><strong>You decide what leaves your account.</strong> Every export is built for a named recipient (a local authority, school, awarding body, social worker or a Subject Access Request), and rules for each recipient decide what may be included. Sensitive items such as safeguarding records are included only when you tick them, except for a Subject Access Request, where full disclosure is the legal default. The choices made for each export are recorded in the audit log in your own spreadsheet (who, what and when).</p>
+  <p><strong>UK processing.</strong> Our server (Google Cloud Run) and the AI features (Google Vertex AI) run in Google's London region (europe-west2). AI features run only when you use them, and only on the content needed for that feature (Section 7).</p>
+  <p><strong>Encryption and signed requests.</strong> All connections use HTTPS, and Google encrypts data stored in Google Drive and Google Cloud. Every request between the app and our server is signed with a secret key (HMAC) held in Google Secret Manager, so requests cannot be forged.</p>
+  <p><strong>What we hold ourselves.</strong> Only the account and licence data described in Section 3, kept as set out in Section 12.</p>
+
+  <h2>7. AI Features</h2>
+  <p>Plan the Day and other planning suggestions use Google's Gemini models through Google Cloud Vertex AI, processed in the London (europe-west2) region. Local learning ideas use Google Maps Platform to suggest nearby venues.</p>
+  <p><strong>What is sent:</strong> only the information needed for the feature you are using — for example your child's age, key stage or working level, the topic or notes you have written, and, for local ideas, the area or postcode you enter. Arena Hub does not attach your child's name, date of birth or contact details to AI requests. Because notes are sent as you write them, please avoid including names or other identifying details in them.</p>
+  <p><strong>What is not done:</strong> AI requests and responses are not stored in Arena Hub's databases, and Google Cloud does not use this data to train its AI models. Arena Hub does not use Google user data to develop, improve or train generalised AI or machine-learning models.</p>
+
+<h2>8. Legal Basis for Processing</h2>
   <p>We rely on the following lawful bases under UK GDPR:</p>
   <p><strong>Contract (Article 6(1)(b)):</strong> Processing your account and licence data, and providing the platform's core functionality, is necessary to perform the subscription contract you have entered into with us.</p>
   <p><strong>Consent (Article 9(2)(a)):</strong> Where content you enter about your child constitutes special category data (health, SEMH, or safeguarding-related information), our processing of it as it passes through our systems on the way to your own Google Workspace relies on your explicit consent, given at signup and exercised each time you choose to enter that information into the platform.</p>
   <p><strong>Legitimate interests (Article 6(1)(f)):</strong> We have a legitimate interest in maintaining the security and integrity of our platform and preventing fraudulent licence use.</p>
 
-  <h2>6. Where Your Data Is Stored</h2>
-  <p>Your account and licence data is stored on Google Cloud infrastructure within the United Kingdom (London, europe-west2 region).</p>
-  <p>Payment transaction data is stored by Stripe, Inc., subject to Stripe's privacy policy and data residency commitments. Stripe is certified under the EU-US Data Privacy Framework and complies with GDPR requirements for international data transfers.</p>
-  <p>We do not use any other third-party data processors for your account data. There are no analytics trackers, advertising networks, or external marketing databases involved in the operation of Arena Hestia.</p>
+  <h2>9. Where Your Data Is Stored and Who Else Processes It</h2>
+  <p>Your account and licence data is stored on Google Cloud infrastructure within the United Kingdom (London, europe-west2 region). Your child's records are stored in your own Google Drive (Section 10).</p>
+  <p>We use the following sub-processors:</p>
+  <p><strong>Google Cloud</strong> (Cloud Run, Firestore, Vertex AI — London, europe-west2): hosting, licence records and AI processing.</p>
+  <p><strong>Google Maps Platform</strong> (local learning ideas only): the area or postcode you enter and the learning topic, to suggest nearby venues. No child details are sent.</p>
+  <p><strong>Brevo</strong> (Sendinblue SAS, EU): sends service emails such as your welcome and activation email (your name, email address and licence key).</p>
+  <p><strong>Stripe, Inc.</strong>: payment processing, subject to Stripe's privacy policy. Stripe is certified under the EU-US Data Privacy Framework and complies with GDPR requirements for international data transfers.</p>
+  <p>There are no analytics trackers, advertising networks or external marketing databases involved in the operation of Arena Hestia.</p>
 
-  <h2>7. Child Data and Household Sovereignty</h2>
+<h2>10. Child Data and Household Sovereignty</h2>
   <p>This is the most important data protection principle underpinning Arena Hestia. All data about your child — every plan entry, every evidence record, every routine and mood check-in, every safeguarding note — is written directly to a Google Spreadsheet within your own Google Workspace account (your Google Drive). This data is governed by your Google Workspace terms of service and your own data protection choices.</p>
-  <p>Arena Hub's Cloud Run functions act as a transient processing layer: they receive a request, write data to your Drive, and return a response. No child data is retained by Arena Hub at rest.</p>
+  <p>The app writes these records to your Drive while signed in as you. Arena Hub's server does not receive or keep your child's records; it only handles the licence, export-rule and AI requests described in Sections 5 and 7.</p>
   <p><strong>Sharing (SECO):</strong> Hestia includes a sharing tool that lets you prepare a record for a Local Authority, mainstream school, awarding body, social worker, or in response to a Subject Access Request. Nothing is shared automatically — every share is a deliberate action you take, sending a specific record to a destination you choose. Arena Hub is not a party to what you choose to share or with whom.</p>
 
-  <h2>8. Google API Services User Data Policy (Limited Use)</h2>
+<h2>11. Google API Services User Data Policy (Limited Use)</h2>
   <p>Arena Hestia's use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
-  <p>When you sign in with your Google Account, Arena Hestia requests access to Google Drive solely to create and write the files you generate within the app — plan entries, evidence records, and PDFs — to your own Google Drive. We use the narrowest available scope (<code>drive.file</code>), which limits Arena Hestia to only the specific files it creates on your behalf, not your wider Drive.</p>
   <p>We do not use Google user data for any purpose other than providing and improving the specific Arena Hestia features you have requested. We do not use Google user data for advertising or marketing purposes, and we do not sell, transfer, or otherwise disclose Google user data to any third party — except where necessary to provide or improve the app's own features as described in this policy, to comply with applicable law, or as part of a merger, acquisition, or sale of assets (with prior notice to you). No human reviews Google user data except with your explicit consent, to investigate a security incident or suspected abuse, or to comply with a legal obligation.</p>
 
-  <h2 id="data-retention">9. Data Retention</h2>
+<h2 id="data-retention">12. Removing Access and Data Retention</h2>
+  <p><strong>To remove Arena Hub's access to your Google account:</strong> go to your Google Account &rarr; Security &rarr; Your connections to third-party apps &amp; services (myaccount.google.com/connections), choose "Arena Hub" and remove access.</p>
   <p>We retain your account data (email, name, household name, licence record) for the duration of your active subscription. Following cancellation or expiry, account data is retained for a maximum of 30 days for the purpose of subscription recovery or query resolution, after which it is deleted from our systems. You may request earlier deletion by contacting <a href="mailto:data-protection@thearenahub.co.uk">data-protection@thearenahub.co.uk</a>.</p>
   <p>Your child's data held within your Google Workspace is entirely your responsibility as Data Controller. Arena Hub has no role in its retention or deletion.</p>
 
-  <h2>10. Your Rights Under UK GDPR</h2>
+<h2>13. Your Rights Under UK GDPR</h2>
   <p>As a data subject, you have the following rights in relation to the personal data we hold about you:</p>
   <p><strong>Right of access:</strong> You may request a copy of the personal data we hold about you.</p>
   <p><strong>Right to rectification:</strong> You may ask us to correct inaccurate data.</p>
@@ -207,14 +232,14 @@ footer a:hover { text-decoration: underline; }
   <p><strong>Right to object:</strong> You may object to processing based on legitimate interests.</p>
   <p>To exercise any of these rights, please contact us at <a href="mailto:data-protection@thearenahub.co.uk">data-protection@thearenahub.co.uk</a>. We will respond within 30 days. If you are dissatisfied with our response, you have the right to lodge a complaint with the Information Commissioner's Office (ICO) at <strong><a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a></strong>.</p>
 
-  <h2>11. Cookies</h2>
+<h2>14. Cookies</h2>
   <p>The Arena Hestia platform uses session cookies solely to maintain your authenticated state during a Google OAuth login session. These cookies are essential for the platform to function and are not used for tracking, advertising, or analytics purposes.</p>
   <p>Our public marketing website (thearenahub.com) does not deploy any analytics, tracking, or third-party advertising cookies. No cookie consent banner is displayed because we do not use non-essential cookies.</p>
 
-  <h2>12. Changes to This Policy</h2>
+<h2>15. Changes to This Policy</h2>
   <p>We may update this Privacy Policy from time to time. Where changes are material, we will notify active subscribers by email before the changes take effect. The "Last updated" date at the top of this page will always reflect the most recent revision.</p>
 
-  <h2>13. Contact</h2>
+<h2>16. Contact</h2>
   <p>All data protection enquiries should be directed to:</p>
   <p><strong>The Arena Hub Ltd</strong><br>
   Email: <a href="mailto:data-protection@thearenahub.co.uk">data-protection@thearenahub.co.uk</a></p>
