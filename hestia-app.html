@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Arena Hestia</title>
+
+<!-- PWA / Home Screen config -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Arena Hestia">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1B263B">
+<meta name="description" content="Arena Hestia — home learning and evidence for parents and carers.">
+
+<!-- Icons -->
+<link rel="apple-touch-icon" sizes="512x512" href="/hestia-icon-512.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/hestia-icon-512.png">
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="/hestia-app-manifest.json">
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #1B263B;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  min-height: 100vh; padding: 24px;
+  color: #fff; text-align: center;
+}
+.logo {
+  width: 96px; height: 96px;
+  background: rgba(255,255,255,.07);
+  border-radius: 22px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+h1 {
+  font-size: 1.6rem; font-weight: 700; margin-bottom: 8px;
+  letter-spacing: -.3px;
+}
+h1 span { color: #C5A059; }
+p { font-size: .9rem; color: rgba(255,255,255,.55); margin-bottom: 28px; line-height: 1.6; }
+.spinner {
+  width: 32px; height: 32px;
+  border: 3px solid rgba(255,255,255,.15);
+  border-top-color: #C5A059;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  margin: 0 auto 16px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.status { font-size: .8rem; color: rgba(255,255,255,.35); }
+.manual-link {
+  margin-top: 24px;
+  font-size: .78rem; color: rgba(255,255,255,.3);
+}
+.manual-link a { color: #C5A059; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="logo">
+  <svg width="52" height="52" viewBox="0 0 24 24" fill="none">
+    <path d="M12 3L4 7.5V16.5L12 21L20 16.5V7.5L12 3Z"
+          stroke="#C5A059" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M12 3V21M4 7.5L20 16.5M20 7.5L4 16.5"
+          stroke="#C5A059" stroke-width="1.1" stroke-opacity=".4"/>
+  </svg>
+</div>
+
+<h1>Arena <span>Hestia</span></h1>
+<p>Opening your workspace…</p>
+<div class="spinner"></div>
+<p class="status" id="status">Redirecting…</p>
+
+<div class="manual-link" id="manual-link" style="display:none;">
+  Not redirecting? <a id="direct-link" href="#">Open Arena Hestia →</a>
+</div>
+
+<script>
+// ── Hestia portal redirect (2026-10-24, KF-107) ─────────────────────────
+// Android TWA com.thearenahub.hestia starts here. Every Hestia household
+// shares this one live deployment, scoped by the signed-in Google account.
+
+var PORTAL_URL = 'https://script.google.com/macros/s/AKfycbwdh_qPKnaEv7AKqHpBHik51l6kQ1T_ptVt0Va_gYtuoACP9syILbdN020ER3tm08k8Ew/exec';
+
+document.getElementById('status').textContent = 'Opening Arena Hestia…';
+document.getElementById('direct-link').href = PORTAL_URL;
+setTimeout(function() {
+  document.getElementById('manual-link').style.display = 'block';
+}, 2000);
+window.location.replace(PORTAL_URL);
+</script>
+</body>
+</html>

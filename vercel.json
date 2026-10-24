@@ -9,6 +9,8 @@
     { "src": "/terms",           "dest": "/terms.html" },
     { "src": "/app",             "dest": "/app.html" },
     { "src": "/app-manifest.json", "dest": "/app-manifest.json" },
+    { "src": "/hestia-app",      "dest": "/hestia-app.html" },
+    { "src": "/hestia-app-manifest.json", "dest": "/hestia-app-manifest.json" },
     { "src": "/(.*)",            "dest": "/$1" }
   ],
   "headers": [

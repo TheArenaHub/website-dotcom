@@ -1,0 +1,26 @@
+{
+  "name": "Arena Hestia",
+  "short_name": "Hestia",
+  "description": "Home learning and evidence for parents and carers.",
+  "start_url": "/hestia-app",
+  "display": "standalone",
+  "background_color": "#1B263B",
+  "theme_color": "#1B263B",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/hestia-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/hestia-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "id": "/hestia-app",
+  "scope": "/"
+}
