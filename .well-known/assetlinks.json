@@ -1,21 +1,28 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.thearenahub.lite",
-    "sha256_cert_fingerprints": [
-      "31:25:DB:13:BE:D6:6C:98:56:88:04:B0:2A:AC:82:E0:92:10:A4:CA:50:FE:C9:55:AF:5D:8B:96:92:05:CC:8A",
-      "DD:28:4F:81:AE:CD:30:71:25:DA:78:1A:01:2F:70:DC:E4:C2:65:16:4D:29:FD:01:61:88:62:21:79:A5:7B:F4"
-    ]
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.thearenahub.lite",
+      "sha256_cert_fingerprints": [
+        "31:25:DB:13:BE:D6:6C:98:56:88:04:B0:2A:AC:82:E0:92:10:A4:CA:50:FE:C9:55:AF:5D:8B:96:92:05:CC:8A",
+        "DD:28:4F:81:AE:CD:30:71:25:DA:78:1A:01:2F:70:DC:E4:C2:65:16:4D:29:FD:01:61:88:62:21:79:A5:7B:F4"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.thearenahub.hestia",
+      "sha256_cert_fingerprints": [
+        "4F:02:4B:26:46:36:EB:A0:4A:56:5E:EE:A9:55:9B:64:DF:AF:78:9E:56:9A:B1:B3:51:B7:B4:BD:EF:38:56:50",
+        "61:77:BE:62:76:FF:1F:1C:42:6B:85:B5:02:56:5B:F6:2E:64:B1:5C:4A:72:11:80:47:08:FB:43:49:A5:4F:A7"
+      ]
+    }
   }
-},
-{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.thearenahub.hestia",
-    "sha256_cert_fingerprints": [
-      "61:77:BE:62:76:FF:1F:1C:42:6B:85:B5:02:56:5B:F6:2E:64:B1:5C:4A:72:11:80:47:08:FB:43:49:A5:4F:A7"
-    ]
-  }
-}]
+]
