@@ -142,7 +142,7 @@ footer a:hover { text-decoration: underline; }
 <div class="page-header">
   <h1>Privacy Policy</h1>
   <p>How The Arena Hub Ltd collects, uses and protects information in Arena Lite and Arena Hestia — including data received from Google APIs.</p>
-  <div class="updated">Last updated: 21 October 2026</div>
+  <div class="updated">Last updated: 4 November 2026</div>
 </div>
 
 <!-- CONTENT -->
@@ -185,9 +185,15 @@ footer a:hover { text-decoration: underline; }
   <p><strong>What we hold ourselves.</strong> Only the account and licence data described in section 3, kept as set out in section 9.</p>
 
   <h2>6. AI Features</h2>
-  <p>Some features — such as Plan the Day, HIVEMIND session plans, curriculum matching and Arena Lite's document descriptions — use Google's Gemini models through Google Cloud Vertex AI, processed in the London (europe-west2) region.</p>
-  <p><strong>What is sent:</strong> only the information needed for the feature you are using, for example the text you have written (an evidence description, notes or a session topic), the learner's age, key stage or working level, and, in Arena Lite, a document you attach as evidence (it is automatically sent to the AI to draft a description, which you then review and edit before saving). Arena Hub does not attach learners' names, dates of birth or contact details to AI requests. Because text and attached documents are sent as you provide them, please avoid including names or other identifying details in them.</p>
-  <p><strong>What is not done:</strong> AI requests and responses are not stored in Arena Hub's databases, and Google Cloud does not use this data to train its AI models. Arena Hub does not use Google user data to develop, improve or train generalised AI or machine-learning models.</p>
+  <p>Some features use Google's Gemini models through Google Cloud Vertex AI, processed in the London (europe-west2) region: in Arena Lite, AI Unit Assist, curriculum and multiplier matching and HIVEMIND session plans; in Arena Hestia, Plan the Day (including enrichment days), curriculum matching, variety suggestions and mood-pattern suggestions. AI features run only when you use them.</p>
+  <p><strong>Names and identifiers are removed first.</strong> Before any AI request leaves your Google account, the app removes from the text the names of the learners or children held in your own records, and email addresses, phone numbers, ID-style numbers (such as ULN, UPN or NHS numbers), dates and postcodes, replacing them with a neutral marker. Where a plan needs to refer to the child, the request says "your child"; the name is put back inside your own account after the reply arrives. Learner IDs, dates of birth and contact details are never sent.</p>
+  <p><strong>What is sent:</strong> only what the feature needs — the text you write for it (for example an evidence note, a session topic or routine notes) after names are removed; a level band and a key stage or age band rather than an exact age; and, in Hestia, the likes and dislikes you have confirmed on the Child Card.</p>
+  <p><strong>SEND and health information stays in your account.</strong> SEND needs, EHCP status, notes fields and other health information are never sent to the AI. If you choose to switch on "Use SEND information" for a learner or child, only the adjustments you tick from a fixed list (such as "short tasks" or "movement breaks") are sent. You can switch this off at any time.</p>
+  <p><strong>No document or photo analysis.</strong> Evidence photos, videos, audio and documents are saved to your Drive and are not sent to the AI. The automatic document description feature in Arena Lite is switched off.</p>
+  <p><strong>Every AI request is recorded in your own audit log</strong> — which feature was used, the names of the fields sent and how many items were removed, but not the content itself. Arena Hub's server logs do not record learner identifiers or the text you write.</p>
+  <p><strong>What is not done:</strong> AI requests and responses are not stored in Arena Hub's databases. Vertex AI's optional data caching is switched off for our Google Cloud project, and Google Cloud does not use this data to train its AI models. Arena Hub does not use Google user data to develop, improve or train generalised AI or machine-learning models.</p>
+  <p><strong>You stay in charge.</strong> AI output is a suggestion. Nothing an AI feature suggests is added to a learner's or child's record until you choose it, and you can edit or ignore it. The apps make no decisions about a learner or child on their own.</p>
+  <p>Free text you type is checked against the names in your own records. A name that is not in your records (for example a sibling's or a friend's) cannot be recognised, so please leave such details out.</p>
 
   <h2>7. Who Else Processes Data (Sub-processors)</h2>
   <p><strong>Google Cloud</strong> (Cloud Run, Firestore, Vertex AI — London, europe-west2): hosting, licence records and AI processing.</p>
@@ -212,7 +218,8 @@ footer a:hover { text-decoration: underline; }
   <p><strong>Contract (UK GDPR Art. 6(1)(b))</strong> for account, licence and service delivery; <strong>legitimate interests (Art. 6(1)(f))</strong> for security, fraud prevention and essential service messages. Marketing emails are only sent with your opt-in consent.</p>
 
   <h2>11. Your Rights Under UK GDPR</h2>
-  <p>You can ask for access to, correction of, erasure of, or a portable copy of your personal data, and you can object to processing based on legitimate interests. Contact <a href="mailto:data-protection@thearenahub.co.uk" data-config="email_data_protection" data-config-href-prefix="mailto:" data-config-href-key="email_data_protection">data-protection@thearenahub.co.uk</a>; we respond within one month. You can also complain to the Information Commissioner's Office at <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a>.</p>
+  <p>You can ask for access to, correction of, erasure of, or a portable copy of your personal data, and you can object to processing based on legitimate interests. Contact <a href="mailto:data-protection@thearenahub.co.uk" data-config="email_data_protection" data-config-href-prefix="mailto:" data-config-href-key="email_data_protection">data-protection@thearenahub.co.uk</a>; we respond within one month.</p>
+  <p><strong>Complaints:</strong> if you are unhappy with how we have used your personal data, you can complain to us at the address above. We will acknowledge your complaint within 30 days, investigate it without undue delay and tell you the outcome. You can also complain to the Information Commissioner's Office at <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a>.</p>
 
   <h2>12. Cookies</h2>
   <p>The apps use only the essential session cookies Google sets to keep you signed in. This website uses no analytics, tracking or advertising cookies.</p>

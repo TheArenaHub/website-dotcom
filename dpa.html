@@ -219,14 +219,14 @@ footer a:hover { text-decoration: underline; }
 <div class="page-header">
   <h1>Data Processing Agreement</h1>
   <p>The formal basis under UK GDPR Article 28 on which The Arena Hub Ltd processes data on behalf of subscribing practitioners and settings.</p>
-  <div class="updated">Ref: ARENA-DPA-2026-001 &nbsp;·&nbsp; Version 1.3 &nbsp;·&nbsp; July 2026</div>
+  <div class="updated">Ref: ARENA-DPA-2026-001 &nbsp;·&nbsp; Version 1.4 &nbsp;·&nbsp; November 2026</div>
 </div>
 
 <!-- CONTENT -->
 <div class="content-wrap">
 
   <div class="callout">
-    <p><strong>Plain English:</strong> You — the practitioner or setting — are the Data Controller. We are the Data Processor. Your students' data never leaves your Google Workspace. We provide the software engine; you hold the keys. This agreement makes that relationship legally explicit under UK GDPR.</p>
+    <p><strong>Plain English:</strong> You — the practitioner or setting — are the Data Controller. We are the Data Processor. Your students' records stay in your Google Workspace; only name-free text needed for an AI feature is processed transiently (Clause 6). We provide the software engine; you hold the keys. This agreement makes that relationship legally explicit under UK GDPR.</p>
   </div>
 
   <h2>1. Parties</h2>
@@ -259,8 +259,8 @@ footer a:hover { text-decoration: underline; }
     <li>Capture and forensic structuring of student evidence against statutory educational taxonomies (EYFS Development Matters, AQA Unit Award Scheme, and equivalent frameworks).</li>
     <li>SEND portfolio management, EHCP progress tracking, and Graduated Approach documentation.</li>
     <li>Safeguarding chronology management and KCSIE-aligned incident logging.</li>
-    <li>Attendance and engagement monitoring, including resilience indicator scoring.</li>
-    <li>AI-assisted evidence cross-referencing (Evidence Multiplier) — subject to mandatory practitioner review before any AI suggestion is committed to the student's formal record.</li>
+    <li>Attendance and engagement recording.</li>
+    <li>AI-assisted unit suggestions (AI Unit Assist), evidence cross-referencing (Evidence Multiplier) and HIVEMIND session planning — suggestions only, subject to practitioner review before anything is committed to the student's record (Clause 6).</li>
     <li>Gap analysis and LA-ready PDF report generation.</li>
   </ul>
 
@@ -301,13 +301,17 @@ footer a:hover { text-decoration: underline; }
   <p>The Processor shall assist the Controller in fulfilling data subject rights requests (access, rectification, erasure, portability, restriction, objection). Because all student data resides in the Controller's own Google Workspace, the Controller can action the majority of Subject Access Requests directly. Where technical assistance is required, the Processor shall respond within 48 hours of written request.</p>
 
   <h3>5.6 Audit Rights</h3>
-  <p>The Processor shall make available all information necessary to demonstrate compliance with this DPA. Written responses to compliance questionnaires will be provided within 10 working days. A completed DPIA (ARENA-DPIA-2026-002, v1.0, approved July 2026) is available upon request from <a href="mailto:compliance@thearenahub.co.uk" data-config="email_compliance" data-config-href-prefix="mailto:" data-config-href-key="email_compliance">compliance@thearenahub.co.uk</a>.</p>
+  <p>The Processor shall make available all information necessary to demonstrate compliance with this DPA. Written responses to compliance questionnaires will be provided within 10 working days. A completed DPIA (ARENA-DPIA-2026-002, v1.1, November 2026) is available upon request from <a href="mailto:compliance@thearenahub.co.uk" data-config="email_compliance" data-config-href-prefix="mailto:" data-config-href-key="email_compliance">compliance@thearenahub.co.uk</a>.</p>
 
-  <h2>6. Automated Processing and Article 22</h2>
-  <p>Arena Lite includes AI-assisted components. The following applies to all automated processing:</p>
+  <h2>6. AI Features, Automated Processing and Article 22</h2>
+  <p>Arena Lite includes AI-assisted features (AI Unit Assist, Evidence Multiplier and anchor matching, HIVEMIND session plans). These use Google Gemini models through Google Cloud Vertex AI in the europe-west2 (London) region. The following applies to all AI processing:</p>
   <div class="callout">
-    <p><strong>Evidence Multiplier:</strong> Cross-references submitted evidence against adjacent taxonomy criteria. Suggestions include a confidence score and require explicit practitioner approval before being committed to the student's formal record. No AI suggestion enters the statutory record without authenticated human review.</p>
-    <p><strong>No automated decision-making:</strong> No decision producing legal or similarly significant effects on a student is made solely by automated means. The platform is a Decision-Support Infrastructure. The practitioner is the Decision Authority. This is constitutionally enforced under Article VI of the Sovereign Educational Infrastructure Constitution.</p>
+    <p><strong>Data minimisation before transfer:</strong> Before any request leaves the Controller's Google Workspace, the platform removes from free text the names of pupils held in the Controller's own STUDENT_VAULT and identifier patterns (email addresses, phone numbers, ULN/UPN/NHS-style numbers, dates, postcodes). Student IDs, dates of birth, exact ages, SEND needs, EHCP status and notes fields are never sent. Level and age are sent only as bands (for example a level band and key stage).</p>
+    <p><strong>SEND adjustments — opt-in only:</strong> Where the practitioner switches on "Use SEND information" for a pupil, only adjustments ticked from a fixed vocabulary (for example "short tasks", "movement breaks") are sent. Raw SEND text is never sent.</p>
+    <p><strong>No document or image analysis:</strong> Evidence photos, videos and documents are not sent to the AI. The automatic document description feature is disabled.</p>
+    <p><strong>Transient processing:</strong> AI requests and responses are not stored by the Processor. Vertex AI data caching is disabled for the Processor's Google Cloud project. Google does not use the data to train its models (Google Cloud service terms).</p>
+    <p><strong>Audit trail:</strong> Every AI request is recorded in the Controller's own SYSTEM_AUDIT_LOG (action AI_REQUEST: user, time, feature, field names sent and number of items removed — never content). The Processor's server logs contain no pupil identifiers or note content.</p>
+    <p><strong>No automated decision-making:</strong> No decision producing legal or similarly significant effects on a student is made solely by automated means. AI output is advisory; the practitioner is the decision-maker and nothing is committed to the student's record without the practitioner's action.</p>
   </div>
 
   <h2>7. Authorised Sub-Processors</h2>
@@ -317,33 +321,39 @@ footer a:hover { text-decoration: underline; }
         <th>Sub-Processor</th>
         <th>Purpose</th>
         <th>Data</th>
-        <th>Transfer Basis</th>
+        <th>Location / Transfer Basis</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><strong>Google LLC</strong><br><em>Google Workspace</em></td>
-        <td>All student data is stored exclusively in the Controller's own GWS tenant. Google hosts under the Controller's GWS terms.</td>
-        <td>All student PII (Controller-held). Arena Hub holds no copies.</td>
-        <td>UK–US Data Privacy Framework</td>
+        <td>All student records are stored in the Controller's own Google Workspace (Drive, Sheets, Apps Script) under the Controller's Google Workspace terms.</td>
+        <td>All student records (Controller-held). Arena Hub holds no copies.</td>
+        <td>Controller's Google Workspace terms.</td>
       </tr>
       <tr>
-        <td><strong>Google LLC</strong><br><em>GCP europe-west2 (London)</em></td>
-        <td>Anonymised telemetry and HMAC-authenticated licence validation. No student PII transits this layer.</td>
-        <td>Anonymised event logs + practitioner email + licence key only.</td>
-        <td>UK–US Data Privacy Framework. UK data residency.</td>
+        <td><strong>Google Cloud</strong><br><em>Cloud Run, Firestore, Secret Manager — europe-west2 (London)</em></td>
+        <td>Licence validation, export rules, support-access reports and routing of AI requests.</td>
+        <td>Practitioner email and licence records; name-free AI request text in transit only.</td>
+        <td>UK (London). Google Cloud data processing terms.</td>
       </tr>
       <tr>
-        <td><strong>Twilio Inc.</strong></td>
-        <td>DSL two-factor authentication (SMS) only. Used solely to verify DSL identity when accessing the Welfare Silo.</td>
-        <td>DSL mobile number only. Not linked to student data.</td>
-        <td>UK Standard Contractual Clauses</td>
+        <td><strong>Google Cloud</strong><br><em>Vertex AI (Gemini) — europe-west2 (London)</em></td>
+        <td>AI unit suggestions, evidence cross-referencing and session plans.</td>
+        <td>Name-free evidence or lesson text, level/age bands, opted-in adjustment tags. Transient; not used for training; caching disabled.</td>
+        <td>UK (London). Google Cloud data processing terms.</td>
       </tr>
       <tr>
-        <td><strong>Google Gemini AI</strong></td>
-        <td>NODE insights: AI-assisted welfare pattern detection for DSL advisory flagging. Stateless — no student data is used for AI training.</td>
-        <td>Anonymised signal summaries only. No student names or identifiers included.</td>
-        <td>Google Cloud API Terms. europe-west2 (London).</td>
+        <td><strong>Brevo</strong><br><em>Sendinblue SAS</em></td>
+        <td>Service emails (activation, support-access notifications).</td>
+        <td>Practitioner name, email address, licence key. No student data.</td>
+        <td>EU (adequacy).</td>
+      </tr>
+      <tr>
+        <td><strong>Stripe, Inc.</strong></td>
+        <td>Payment processing for paid subscriptions.</td>
+        <td>Purchaser payment details. No student data.</td>
+        <td>UK–US Data Bridge / Standard Contractual Clauses.</td>
       </tr>
     </tbody>
   </table>
@@ -352,35 +362,39 @@ footer a:hover { text-decoration: underline; }
   <div class="toms-grid">
     <div class="tom-card">
       <h4>Sovereign Data Anchoring</h4>
-      <p>All student PII stored exclusively in the Controller's GWS tenant. Arena Hub holds zero copies at rest.</p>
+      <p>All student records are stored in the Controller&#8217;s own Google Workspace. Arena Hub holds no copies at rest.</p>
     </div>
     <div class="tom-card">
-      <h4>Role-Based Access Control</h4>
-      <p>GWS-native permissions govern all access. Managed by the Controller's GWS administrator.</p>
+      <h4>Narrowest Google Permissions</h4>
+      <p>The platform uses <code>drive.file</code> only, so it can reach just the files it created or the Controller selected. Apps Script runs as the accessing user.</p>
     </div>
     <div class="tom-card">
-      <h4>Welfare Silo</h4>
-      <p>Safeguarding data in a GWS subfolder with inheritance revoked. DSL-exclusive access only. Arena Hub has no access to this silo.</p>
+      <h4>Protected, Audited Records</h4>
+      <p>Safeguarding, audit and support-access records are protected against manual edits. Safeguarding entries, exports, support access and AI requests are written to an audit log (who, what, when).</p>
     </div>
     <div class="tom-card">
-      <h4>VAR Sentry — Immutable Audit Trail</h4>
-      <p>Every edit captured with WHO / WHAT / WHEN / WHERE. Cannot be altered or deleted by any user.</p>
+      <h4>Recipient-Specific Exports</h4>
+      <p>Each export is built for a named recipient under rules for that recipient. Sensitive items are included only when the practitioner ticks them (Subject Access Requests excepted). Choices are audited.</p>
     </div>
     <div class="tom-card">
       <h4>HMAC-Authenticated Perimeter</h4>
-      <p>The only data crossing the GWS boundary is a cryptographically signed licence handshake. Contains no student PII.</p>
+      <p>Every request to Arena Hub&#8217;s server is signed (HMAC-SHA256, secret held in Google Secret Manager) and the licence is checked.</p>
     </div>
     <div class="tom-card">
-      <h4>DSL Two-Factor Authentication</h4>
-      <p>Welfare Silo access requires GWS OAuth + Twilio SMS 2FA. A compromised GWS credential alone cannot access safeguarding records.</p>
+      <h4>Name-Free AI Requests</h4>
+      <p>Pupil names and identifier patterns are removed locally before any AI request; IDs, dates of birth, exact ages and SEND/EHCP text are never sent (Clause 6).</p>
     </div>
     <div class="tom-card">
-      <h4>Forensic Firewall</h4>
-      <p>Constitutionally prohibits automated emotional state classification, neurological profiling, and automated risk scoring without human review.</p>
+      <h4>Opt-In SEND Adjustments</h4>
+      <p>Only adjustments ticked from a fixed vocabulary are shared, and only where the practitioner has opted in for that pupil.</p>
     </div>
     <div class="tom-card">
-      <h4>Stateless AI Inference</h4>
-      <p>All Gemini AI calls are stateless. No student data retained between calls. No student data used for model training.</p>
+      <h4>Transient AI Inference</h4>
+      <p>AI requests and responses are not stored by Arena Hub; Vertex AI caching is disabled; no training on Controller data. UK (London) processing.</p>
+    </div>
+    <div class="tom-card">
+      <h4>Time-Limited Support Access</h4>
+      <p>Support access is granted only by the Controller, for a chosen window; Google removes it automatically at expiry, and the Controller receives a report.</p>
     </div>
   </div>
 
@@ -401,7 +415,7 @@ footer a:hover { text-decoration: underline; }
   <ul>
     <li><strong>(a)</strong> Is initiated exclusively by the Controller &#x2014; no access can be granted without the Controller&#x2019;s explicit action;</li>
     <li><strong>(b)</strong> Grants editor-level access to the Controller&#x2019;s Arena Lite spreadsheet only &#x2014; no other files in the Controller&#x2019;s Google Workspace are affected;</li>
-    <li><strong>(c)</strong> Is time-limited: the Controller selects a support window (default: 48 hours), after which a GAS time-based trigger automatically revokes access;</li>
+    <li><strong>(c)</strong> Is time-limited: the Controller selects a support window (default: 48 hours); the access is created with an expiry date so Google removes it automatically when the window ends, and the Controller is emailed a support-access report;</li>
     <li><strong>(d)</strong> May be revoked at any time by the Controller via the &#x201C;Relinquish Access&#x201D; function in the Portal, or by the Processor Director via the Command Centre;</li>
     <li><strong>(e)</strong> Is fully audited: every grant and revocation event is written to a forensic <code>SUPPORT_ACCESS_LOG</code> tab within the Controller&#x2019;s own Arena Lite spreadsheet, recording timestamp, granted account, duration, and action type;</li>
     <li><strong>(f)</strong> Is subject to the full confidentiality obligations in Clause 5 &#x2014; the Processor Director will not access, copy, share, or use Controller data for any purpose other than resolving the specific technical issue raised by the Controller.</li>
@@ -418,7 +432,7 @@ footer a:hover { text-decoration: underline; }
   <p>The Controller's statutory retention obligations remain in force independently of this DPA: safeguarding records (25 years), student performance records (6 years), audit logs (7 years).</p>
 
   <h2>12. International Data Transfers</h2>
-  <p>All primary student data processing occurs within the United Kingdom. Arena Hub Ltd's GCP infrastructure operates exclusively in the <strong>europe-west2 (London)</strong> region. No student PII is transferred outside the UK during normal operation. Sub-processor transfers under US law are governed by the UK–US Data Privacy Framework and UK Standard Contractual Clauses (see Clause 7).</p>
+  <p>Arena Hub Ltd's Google Cloud infrastructure, including Vertex AI, operates in the <strong>europe-west2 (London)</strong> region, and student records remain in the Controller's own Google Workspace. Arena Hub does not transfer student data outside the UK. Brevo (EU) and Stripe receive only practitioner or purchaser details, under the transfer safeguards listed in Clause 7.</p>
 
   <h2>13. Governing Law</h2>
   <p>This DPA is governed by the laws of England and Wales. Any dispute shall be subject to the exclusive jurisdiction of the courts of England and Wales. This DPA forms part of the Arena Lite subscription agreement and prevails over the subscription terms in respect of personal data processing where any conflict arises.</p>

@@ -142,7 +142,7 @@ footer a:hover { text-decoration: underline; }
 <div class="page-header">
   <h1>Privacy Policy — Arena Hestia</h1>
   <p>How The Arena Hub Ltd collects, uses, and protects your family's information.</p>
-  <div class="updated">Last updated: 24 October 2026</div>
+  <div class="updated">Last updated: 4 November 2026</div>
 </div>
 
 <!-- CONTENT -->
@@ -165,13 +165,13 @@ footer a:hover { text-decoration: underline; }
   <p><strong>Account data:</strong> Your email address, your full name, and your household or family name. This is provided by you during the subscription checkout process.</p>
   <p><strong>Licence data:</strong> Your unique Arena Hestia licence key, subscription plan, subscription start date, and subscription status.</p>
   <p><strong>Payment data:</strong> Payment processing is handled entirely by Stripe, Inc. We do not store payment card numbers or full payment details on our systems. Stripe retains payment data in accordance with their own privacy policy and PCI DSS obligations.</p>
-  <p><strong>In full and open terms — what the app itself touches:</strong> when you use Hestia's features (Plan the Day, Add Evidence, Routine and Mood, Child Card, Safeguarding), the content you enter — including your child's name, date of birth, key stage, plan entries, evidence photos/videos/audio, routine and mood check-ins and safeguarding notes — is written by the app, signed in as you, to a spreadsheet and folders in your own Google Drive. Arena Hub's own server only receives what a feature needs: your licence details, the export rules for a recipient, and the limited content sent to the AI features (Section 7). We do not keep a copy of your child's records on our own systems (Section 10). We describe this plainly rather than narrowly, because it involves your child's data and you are entitled to the fullest picture, not the minimum required disclosure.</p>
+  <p><strong>In full and open terms — what the app itself touches:</strong> when you use Hestia's features (Plan the Day, Add Evidence, Routine and Mood, Child Card, Safeguarding), the content you enter — including your child's name, date of birth, key stage, plan entries, evidence photos/videos/audio, routine and mood check-ins and safeguarding notes — is written by the app, signed in as you, to a spreadsheet and folders in your own Google Drive. Arena Hub's own server only receives what a feature needs: your licence details, the export rules for a recipient, and the limited, name-free content sent to the AI features (Section 7). We do not keep a copy of your child's records on our own systems (Section 10). We describe this plainly rather than narrowly, because it involves your child's data and you are entitled to the fullest picture, not the minimum required disclosure.</p>
 
 <h2>4. How We Use Your Data</h2>
   <p>We use your account data for the following purposes only:</p>
   <p><strong>Licence validation:</strong> To verify that you hold a valid, active Arena Hestia subscription when you activate or use the platform.</p>
   <p><strong>Account management:</strong> To manage your subscription, process renewals, and handle requests to change or cancel your account.</p>
-  <p><strong>AI features:</strong> To provide Plan the Day suggestions and local learning ideas when you use them (Section 7).</p>
+  <p><strong>AI features:</strong> To provide Plan the Day suggestions, curriculum matching, mood-pattern suggestions and local learning ideas when you use them (Section 7).</p>
   <p><strong>Product and service communications:</strong> To notify you of important updates to the platform, changes to these terms, or critical security notices. We do not send marketing emails without your explicit opt-in consent.</p>
 
   <h2>5. Google User Data: What We Access and Why</h2>
@@ -190,9 +190,14 @@ footer a:hover { text-decoration: underline; }
   <p><strong>What we hold ourselves.</strong> Only the account and licence data described in Section 3, kept as set out in Section 12.</p>
 
   <h2>7. AI Features</h2>
-  <p>Plan the Day and other planning suggestions use Google's Gemini models through Google Cloud Vertex AI, processed in the London (europe-west2) region. Local learning ideas use Google Maps Platform to suggest nearby venues.</p>
-  <p><strong>What is sent:</strong> only the information needed for the feature you are using — for example your child's age, key stage or working level, the topic or notes you have written, and, for local ideas, the area or postcode you enter. Arena Hub does not attach your child's name, date of birth or contact details to AI requests. Because notes are sent as you write them, please avoid including names or other identifying details in them.</p>
-  <p><strong>What is not done:</strong> AI requests and responses are not stored in Arena Hub's databases, and Google Cloud does not use this data to train its AI models. Arena Hub does not use Google user data to develop, improve or train generalised AI or machine-learning models.</p>
+  <p>Plan the Day (including enrichment days), curriculum matching, variety suggestions and mood-pattern suggestions use Google's Gemini models through Google Cloud Vertex AI, processed in the London (europe-west2) region. Local learning ideas use Google Maps Platform to suggest nearby venues. AI features run only when you use them.</p>
+  <p><strong>Your child's name is never sent.</strong> Before any AI request leaves your Google account, Hestia removes from the text the names of the children in your household records, and email addresses, phone numbers, ID-style numbers, dates and postcodes. The request refers to "your child", and Hestia puts your child's name back into the plan inside your own account after the reply arrives. Your child's date of birth, contact details and record IDs are never sent.</p>
+  <p><strong>What is sent:</strong> only what the feature needs — the text you write for it (for example what you would like to do today, where you are, or routine notes) after names are removed; your child's key stage, working level and reading or numeracy level; today's mood or resilience score when you use it for a plan; the likes and dislikes you have confirmed on the Child Card; and, for local ideas, the area or postcode you enter.</p>
+  <p><strong>SEND and health information stays in your Drive.</strong> Your child's SEND need, EHCP status, notes and other health information are never sent to the AI. "Suggest from notes" on the Child Card works inside your own account — nothing is sent. If you switch on "Use SEND information to adapt plans", only the adjustments you tick from a fixed list (such as "short tasks" or "a quiet space") are sent. You can switch this off at any time.</p>
+  <p><strong>Every AI request is recorded in your own audit log</strong> — which feature was used, the names of the fields sent and how many items were removed, but not the content. Arena Hub's server logs do not record your child's details or the text you write.</p>
+  <p><strong>What is not done:</strong> AI requests and responses are not stored in Arena Hub's databases. Vertex AI's optional data caching is switched off for our Google Cloud project, and Google Cloud does not use this data to train its AI models. Arena Hub does not use Google user data to develop, improve or train generalised AI or machine-learning models.</p>
+  <p><strong>You stay in charge.</strong> AI plans and suggestions are ideas for you to use, change or ignore. Nothing is added to your child's record unless you choose it.</p>
+  <p>Hestia checks free text against the names in your own records. A name that is not in your records (for example a friend's) cannot be recognised, so please leave such details out.</p>
 
 <h2>8. Legal Basis for Processing</h2>
   <p>We rely on the following lawful bases under UK GDPR:</p>
@@ -230,7 +235,8 @@ footer a:hover { text-decoration: underline; }
   <p><strong>Right to erasure:</strong> You may ask us to delete your account data, subject to any legal obligations to retain it.</p>
   <p><strong>Right to data portability:</strong> You may request your account data in a structured, machine-readable format.</p>
   <p><strong>Right to object:</strong> You may object to processing based on legitimate interests.</p>
-  <p>To exercise any of these rights, please contact us at <a href="mailto:data-protection@thearenahub.co.uk">data-protection@thearenahub.co.uk</a>. We will respond within 30 days. If you are dissatisfied with our response, you have the right to lodge a complaint with the Information Commissioner's Office (ICO) at <strong><a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a></strong>.</p>
+  <p>To exercise any of these rights, please contact us at <a href="mailto:data-protection@thearenahub.co.uk">data-protection@thearenahub.co.uk</a>. We will respond within 30 days.</p>
+  <p><strong>Complaints:</strong> if you are unhappy with how we have used your personal data, you can complain to us at the same address. We will acknowledge your complaint within 30 days, investigate it without undue delay and tell you the outcome. You also have the right to lodge a complaint with the Information Commissioner's Office (ICO) at <strong><a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a></strong>.</p>
 
 <h2>14. Cookies</h2>
   <p>The Arena Hestia platform uses session cookies solely to maintain your authenticated state during a Google OAuth login session. These cookies are essential for the platform to function and are not used for tracking, advertising, or analytics purposes.</p>
