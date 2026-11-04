@@ -2095,6 +2095,12 @@ a {
   color: var(--muted);
   margin-bottom: 1.75rem;
 }
+/* [Founder offer 2026-11-04] */
+.founder-flag { display:inline-block; background:#C79A4B; color:#1E1A16; font-size:0.75rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; border-radius:20px; padding:0.25rem 0.8rem; margin-top:0.5rem; }
+.price-was { font-size:0.45em; font-weight:500; opacity:0.6; text-decoration:line-through; margin-right:0.35rem; vertical-align:middle; }
+.founder-terms { font-size:0.78rem; line-height:1.45; opacity:0.8; margin:0.75rem 0 0; text-align:left; }
+.founder-terms a { text-decoration:underline; }
+
 
 .pricing__card-features {
   list-style: none;
@@ -2758,8 +2764,9 @@ a {
 
     <div class="pricing__card reveal reveal--delay-1">
       <div class="pricing__card-name">Arena Lite</div>
-      <div class="pricing__card-amount" id="priceAmount">£19.99<span>/month</span></div>
-      <p class="pricing__card-period-note" id="priceNote">Billed monthly · cancel any time</p>
+      <div class="founder-flag">Founder price &middot; until 1 May 2027</div>
+      <div class="pricing__card-amount" id="priceAmount"><s class="price-was">£19.99</s>£14.99<span>/month</span></div>
+      <p class="pricing__card-period-note" id="priceNote">Billed monthly · cancel any time · £5 off every month while you stay subscribed</p>
 
       <ul class="pricing__card-features">
         <li>Unlimited evidence captures</li>
@@ -2769,7 +2776,8 @@ a {
         <li>No setup fee, no IT involvement required</li>
       </ul>
 
-      <button class="btn btn--primary" onclick="openCheckout('lite')">Subscribe — £19.99/mo</button>
+      <button class="btn btn--primary" id="subscribeBtn" onclick="openCheckout('lite')">Subscribe — £14.99/mo</button>
+      <p class="founder-terms"><strong>Founder price terms:</strong> for new subscriptions started by 23:59 (GMT) on 1&nbsp;May&nbsp;2027. You keep the Founder price for as long as that subscription stays active, including renewals. If the subscription ends &mdash; you cancel, or a payment is still unpaid after a month of retries &mdash; a new subscription is charged at the standard price. Standard prices: £19.99/month or £180/year. <a href="terms.html#founder">Full terms</a>.</p>
     </div>
 
     <p class="pricing__trial-note reveal">
@@ -2951,8 +2959,9 @@ var PRICE_IDS     = {
   annual:  'price_1TXKfxKDJYSl9R7nhN91kde0'    // £180/yr
 };
 var PRICE_DISPLAY = {
-  monthly: { amount: '£19.99', unit: '/month', note: 'Billed monthly · cancel any time', btn: 'Subscribe — £19.99/mo' },
-  annual:  { amount: '£180', unit: '/year',  note: 'Billed annually · ~25% cheaper than monthly', btn: 'Subscribe — £180/yr' }
+  // Founder prices (Stripe coupons FOUNDER_LITE_*, applied by the server until 1 May 2027 23:59 GMT)
+  monthly: { amount: '<s class="price-was">£19.99</s>£14.99', unit: '/month', note: 'Billed monthly · cancel any time · £5 off every month while you stay subscribed', btn: 'Subscribe — £14.99/mo' },
+  annual:  { amount: '<s class="price-was">£180</s>£135', unit: '/year',  note: 'Billed annually · £45 off every year while you stay subscribed (~25% cheaper than monthly)', btn: 'Subscribe — £135/yr' }
 };
 var _billingPeriod = 'monthly';
 var _checkoutSubmitting = false;
@@ -2969,7 +2978,7 @@ function toggleBilling() {
   document.getElementById('priceAmount').innerHTML = d.amount + '<span>' + d.unit + '</span>';
   document.getElementById('priceNote').textContent  = d.note;
 
-  var btn = document.querySelector('.pricing__card .btn');
+  var btn = document.getElementById('subscribeBtn');
   if (btn) btn.textContent = d.btn;
 }
 
