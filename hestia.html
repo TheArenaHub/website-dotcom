@@ -556,13 +556,13 @@ a { color: inherit; text-decoration: none; }
             <img src="assets/hestia-screen-plan-the-day.png" alt="Hestia Plan the Day screen — resilience and mood check-in, learning mode preference">
           </div>
         </div>
-        <div class="workflow__step-label"><h3>Plan the day</h3><p>Tell Hestia what today needs — it drafts an AI-guided plan tailored to your child, grounded in what's worked before.</p></div>
+        <div class="workflow__step-label"><h3>Plan the day</h3><p>Tell Hestia what today needs — it drafts an AI-guided plan tailored to your child. Hestia keeps track of each topic you've covered and suggests how to build on it; you choose.</p></div>
       </div>
       <div class="workflow__step reveal reveal--delay-2">
         <div class="workflow__step-num" aria-hidden="true">2</div>
         <div class="phone-frame" style="max-width:none;">
           <div class="phone-frame__screen">
-            <img src="assets/hestia-screen-add-evidence.png" alt="Hestia Add Evidence screen — photo, video, audio or written note capture with curriculum matching">
+            <img src="assets/hestia-screen-add-evidence.png" alt="Hestia Add Evidence screen — photo, video, document or written note capture with curriculum matching">
           </div>
         </div>
         <div class="workflow__step-label"><h3>Capture what happened</h3><p>A quick note or photo, logged in the moment — park it for later or commit it straight away.</p></div>
@@ -617,8 +617,8 @@ a { color: inherit; text-decoration: none; }
         <div class="showcase__card-label"><h3>Plan the day</h3><p>A short check-in on mood and energy, then a plan shaped around how today's actually going.</p></div>
       </div>
       <div class="showcase__card reveal">
-        <img src="assets/hestia-screen-add-evidence.png" alt="Hestia Add Evidence screen — photo, video, audio or written note capture with curriculum matching">
-        <div class="showcase__card-label"><h3>Capture evidence</h3><p>Photo, video, audio or a quick written note — park it for later or commit it straight away.</p></div>
+        <img src="assets/hestia-screen-add-evidence.png" alt="Hestia Add Evidence screen — photo, video, document or written note capture with curriculum matching">
+        <div class="showcase__card-label"><h3>Capture evidence</h3><p>Photo, video, a document or a quick written note — park it for later or commit it straight away.</p></div>
       </div>
       <div class="showcase__card reveal">
         <img src="assets/hestia-screen-routine-mood.png" alt="Hestia Routine and Mood screen — resilience score and mood tags logged with a timestamp">
@@ -674,7 +674,7 @@ a { color: inherit; text-decoration: none; }
       <table class="contrast__table" role="table" aria-label="Comparison of managing SEMH support alone versus with Hestia">
         <thead><tr><th scope="col">Without Hestia</th><th scope="col">With Hestia</th></tr></thead>
         <tbody>
-          <tr><td class="cell--before">Starting each day from scratch, unsure what to try</td><td class="cell--after">An AI-guided plan, grounded in what's worked before</td></tr>
+          <tr><td class="cell--before">Starting each day from scratch, unsure what to try</td><td class="cell--after">An AI-guided plan that builds on what you've already done together</td></tr>
           <tr><td class="cell--before">What happened today lives in memory, then fades</td><td class="cell--after">Captured in the moment, kept where you can find it</td></tr>
           <tr><td class="cell--before">Safeguarding concerns noted wherever's convenient</td><td class="cell--after">One sovereign record, under your control</td></tr>
           <tr><td class="cell--before">Routine and mood changes noticed, then forgotten</td><td class="cell--after">Tracked over time — a pattern you can actually see</td></tr>
@@ -696,7 +696,7 @@ a { color: inherit; text-decoration: none; }
       </div>
       <div class="trust__points reveal reveal--delay-2" role="list">
         <div class="trust__point" role="listitem"><h3 class="trust__point-title">Your account. Your record.</h3><p class="trust__point-text">Everything Hestia captures lives in a space tied to your own Google account, not a shared database.</p></div>
-        <div class="trust__point" role="listitem"><h3 class="trust__point-title">Zero central extraction.</h3><p class="trust__point-text">No child data sold, profiled, or handed to a third party. Nothing leaves without your explicit action.</p></div>
+        <div class="trust__point" role="listitem"><h3 class="trust__point-title">Zero central extraction.</h3><p class="trust__point-text">Your records stay in your own Google account. Names are removed before anything goes to the AI, and nothing is shared unless you choose to share it.</p></div>
         <div class="trust__point" role="listitem"><h3 class="trust__point-title">You decide who sees it.</h3><p class="trust__point-text">If a record needs to go to a school, a professional, or a review meeting — that's always your deliberate choice.</p></div>
         <div class="trust__point" role="listitem"><h3 class="trust__point-title">Built for home, not institutions.</h3><p class="trust__point-text">Hestia doesn't ask you to change how your family already works. It sits alongside your day.</p></div>
       </div>
@@ -946,6 +946,14 @@ function closeCheckout() { document.getElementById('checkoutModal').classList.re
 function hideCheckoutError() { var el = document.getElementById('checkoutModalStatus'); el.className = 'checkout-modal__status'; el.textContent = ''; }
 function showCheckoutError(msg) { var el = document.getElementById('checkoutModalStatus'); el.textContent = msg; el.className = 'checkout-modal__status is-visible'; }
 
+function acqFromUrl() {
+  // First-party campaign source from the page URL only (no cookies, no storage). e.g. ?utm_source=flyer&utm_medium=print&utm_campaign=nov26
+  try {
+    var q = new URLSearchParams(window.location.search), out = [];
+    ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function(k) { out.push(String(q.get(k) || '').replace(/[^A-Za-z0-9 _.\-]/g, '').slice(0, 40)); });
+    return out.some(Boolean) ? out.join('|') : '';
+  } catch (e) { return ''; }
+}
 function submitCheckout() {
   if (_checkoutSubmitting) return;
   hideCheckoutError();
@@ -974,7 +982,7 @@ function submitCheckout() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       email: email, orgName: orgName, practitionerName: (firstName + ' ' + lastName).trim(),
-      plan: _billingPeriod, product: PRODUCT, priceId: PRICE_IDS[_billingPeriod]
+      plan: _billingPeriod, product: PRODUCT, priceId: PRICE_IDS[_billingPeriod], acq: acqFromUrl()
     })
   })
   .then(function(res) { return res.json(); })
@@ -997,7 +1005,13 @@ function submitCheckout() {
 }
 </script>
 
-<script src="marketing-data-loader.js"></script>
+<script src="marketing-data-loader.js">
+document.addEventListener('DOMContentLoaded', function() {
+  var s = window.location.search;
+  if (!/utm_/.test(s)) return;
+  Array.prototype.forEach.call(document.querySelectorAll('a[href="hestia-signup.html"]'), function(a) { a.setAttribute('href', 'hestia-signup.html' + s); });
+});
+</script>
 
 </body>
 </html>
