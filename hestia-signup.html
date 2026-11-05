@@ -195,7 +195,7 @@
       </div>
 
       <h1>Create your free account</h1>
-      <p class="subtitle">Your family's Evidence Vault is created in your own Google Drive — Arena Hub holds zero child data.</p>
+      <p class="subtitle">Your family's Evidence Vault is created in your own Google Drive — your records stay in your own Google account.</p>
 
       <div id="statusBanner" class="status"></div>
 
@@ -224,10 +224,15 @@
         Start free trial
       </button>
 
+      <p style="font-size:.8rem;color:#6B7280;margin:12px 0 0;text-align:center;line-height:1.5;">
+        We will email you a sign-in link and up to two short messages about your trial ending.
+        Reply STOP to any of them to opt out. See our <a href="hestia-privacy.html" style="color:var(--navy)">Privacy Policy</a>.
+      </p>
+
       <div class="trust">
         <span>🔐 Your own Google account</span>
         <span>🏡 Data in your Drive</span>
-        <span>📋 GDPR Art. 28</span>
+        <span>🇬🇧 UK company</span>
         <span>🚫 No credit card</span>
       </div>
     </div>
@@ -246,12 +251,20 @@
 </div>
 
 <footer>
-  <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+  <a href="hestia-privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
   <a href="terms.html">Terms</a> &nbsp;·&nbsp;
   © 2026 The Arena Hub Ltd
 </footer>
 
 <script>
+function acqFromUrl() {
+  // First-party campaign source from the page URL only (no cookies, no storage). e.g. ?utm_source=flyer&utm_medium=print&utm_campaign=nov26
+  try {
+    var q = new URLSearchParams(window.location.search), out = [];
+    ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function(k) { out.push(String(q.get(k) || '').replace(/[^A-Za-z0-9 _.\-]/g, '').slice(0, 40)); });
+    return out.some(Boolean) ? out.join('|') : '';
+  } catch (e) { return ''; }
+}
   var CLOUD_RUN_URL = 'https://arena-hub-ingestor-820703761059.europe-west2.run.app/createHestiaTrialAccount';
 
   var _submitting = false;
@@ -301,7 +314,7 @@
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify({ firstName: firstName, lastName: lastName,
-                                email: email, householdName: householdName })
+                                email: email, householdName: householdName, acq: acqFromUrl() })
     })
     .then(function(res) { return res.json(); })
     .then(function(data) {
