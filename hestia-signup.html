@@ -119,6 +119,14 @@
     -webkit-appearance: none; appearance: none;
     font-family: inherit;
   }
+  /* checkbox: the global input rule above sets appearance:none and width:100% (KF-155/KF-160) - restore a native, visible checkbox */
+  input[type="checkbox"] {
+    -webkit-appearance: checkbox; appearance: auto;
+    width: 20px; height: 20px; padding: 0; margin: 2px 0 0; flex: 0 0 auto;
+    accent-color: var(--navy); cursor: pointer;
+  }
+  label.optout { display: flex; align-items: flex-start; gap: 10px; text-transform: none; letter-spacing: 0;
+    font-size: .9rem; font-weight: 500; line-height: 1.45; margin: 16px 0 0; cursor: pointer; }
   input:focus { border-color: var(--gold); }
   input.err { border-color: var(--err); }
 
@@ -224,8 +232,8 @@
         Start free trial
       </button>
 
-      <label for="noReminders" style="display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:#1B263B;margin:16px 0 0;line-height:1.45;cursor:pointer;">
-        <input type="checkbox" id="noReminders" style="width:auto;flex:0 0 auto;margin:3px 0 0;padding:0;">
+      <label for="noReminders" class="optout">
+        <input type="checkbox" id="noReminders">
         <span>I don&rsquo;t want emails about my free trial ending.</span>
       </label>
       <p style="font-size:.8rem;color:#6B7280;margin:8px 0 0;text-align:center;line-height:1.5;">
