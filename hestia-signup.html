@@ -224,9 +224,14 @@
         Start free trial
       </button>
 
-      <p style="font-size:.8rem;color:#6B7280;margin:12px 0 0;text-align:center;line-height:1.5;">
-        We will email you a sign-in link and up to two short messages about your trial ending.
-        Reply STOP to any of them to opt out. See our <a href="hestia-privacy.html" style="color:var(--navy)">Privacy Policy</a>.
+      <label for="noReminders" style="display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:#1B263B;margin:16px 0 0;line-height:1.45;cursor:pointer;">
+        <input type="checkbox" id="noReminders" style="width:auto;flex:0 0 auto;margin:3px 0 0;padding:0;">
+        <span>I don&rsquo;t want emails about my free trial ending.</span>
+      </label>
+      <p style="font-size:.8rem;color:#6B7280;margin:8px 0 0;text-align:center;line-height:1.5;">
+        We will email you a sign-in link. Unless you tick the box above, we will also send up to two short emails from The Arena Hub
+        about your trial ending and how to subscribe to Hestia. You can opt out at any time by replying STOP to any of them.
+        See our <a href="hestia-privacy.html" style="color:var(--navy)">Privacy Policy</a>.
       </p>
 
       <div class="trust">
@@ -314,7 +319,8 @@ function acqFromUrl() {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify({ firstName: firstName, lastName: lastName,
-                                email: email, householdName: householdName, acq: acqFromUrl() })
+                                email: email, householdName: householdName, acq: acqFromUrl(),
+                                noReminders: !!document.getElementById('noReminders').checked })
     })
     .then(function(res) { return res.json(); })
     .then(function(data) {
