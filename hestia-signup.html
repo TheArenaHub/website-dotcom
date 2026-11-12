@@ -228,6 +228,9 @@
         <input type="text" id="householdName" placeholder="The Smith Family" autocomplete="off">
       </div>
 
+      <label class="optout" style="display:flex;gap:8px;margin:0 0 10px;text-align:left;"><input type="checkbox" id="acceptTerms"><span>I agree to the <a href="hestia-terms.html" target="_blank" rel="noopener" style="color:var(--navy)">Hestia Terms</a> and have read the <a href="hestia-privacy.html" target="_blank" rel="noopener" style="color:var(--navy)">Privacy Policy</a>.</span></label>
+      <label class="optout" style="display:flex;gap:8px;margin:0 0 14px;text-align:left;"><input type="checkbox" id="specialCat"><span>I consent to Hestia handling any health, SEND or other sensitive information about my child that I choose to enter, as explained in the Privacy Policy. I can withdraw this at any time by deleting the information or emailing data-protection@thearenahub.co.uk.</span></label>
+
       <button class="btn" id="submitBtn" onclick="submitSignup()">
         Start free trial
       </button>
@@ -265,7 +268,7 @@
 
 <footer>
   <a href="hestia-privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
-  <a href="terms.html">Terms</a> &nbsp;·&nbsp;
+  <a href="hestia-terms.html">Terms</a> &nbsp;·&nbsp;
   © 2026 The Arena Hub Ltd
 </footer>
 
@@ -308,6 +311,10 @@ function acqFromUrl() {
     var email         = (document.getElementById('email').value         || '').trim().toLowerCase();
     var householdName = (document.getElementById('householdName').value || '').trim();
 
+    if (!document.getElementById('acceptTerms').checked || !document.getElementById('specialCat').checked) {
+      showStatus('Please tick both boxes to continue. You can leave the sensitive-information box unticked only if you do not want to use Hestia.', 'err');
+      return;
+    }
     var ok = true;
     if (!firstName) { setErr('firstName'); ok = false; }
     if (!lastName)  { setErr('lastName');  ok = false; }
@@ -328,7 +335,8 @@ function acqFromUrl() {
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify({ firstName: firstName, lastName: lastName,
                                 email: email, householdName: householdName, acq: acqFromUrl(),
-                                noReminders: !!document.getElementById('noReminders').checked })
+                                noReminders: !!document.getElementById('noReminders').checked,
+                                acceptTerms: true, specialCatConsent: true, termsVersion: 'HESTIA-TERMS-2026-11-12' })
     })
     .then(function(res) { return res.json(); })
     .then(function(data) {
