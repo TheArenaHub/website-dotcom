@@ -272,6 +272,8 @@
         </select>
       </div>
 
+      <label style="display:flex;gap:8px;margin:0 0 14px;text-align:left;font-size:.85rem;line-height:1.45;cursor:pointer;"><input type="checkbox" id="acceptTerms" style="margin-top:3px;flex:none;"><span>I agree to the <a href="terms.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Terms</a> and have read the <a href="privacy.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Privacy Policy</a>.</span></label>
+
       <button class="btn" id="submitBtn" onclick="submitSignup()">
         Start free trial
       </button>
@@ -340,6 +342,8 @@
     var orgName   = (document.getElementById('orgName').value   || '').trim();
     var orgType   = document.getElementById('orgType').value;
 
+    if (!document.getElementById('acceptTerms').checked) { showStatus('Please tick the box to agree to the Terms and Privacy Policy.', 'err'); return; }
+
     // ── Client validation ────────────────────────────────────────────────────
     var ok = true;
     if (!firstName) { setErr('firstName'); ok = false; }
@@ -362,7 +366,8 @@
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify({ firstName: firstName, lastName: lastName,
-                                email: email, orgName: orgName, orgType: orgType })
+                                email: email, orgName: orgName, orgType: orgType,
+                                acceptTerms: true, termsVersion: 'LITE-TERMS-2026-11-12' })
     })
     .then(function(res) { return res.json(); })
     .then(function(data) {

@@ -2886,6 +2886,11 @@ a {
       <input type="text" id="ckOrgName" autocomplete="organization">
     </div>
 
+    <div class="checkout-modal__summary" style="font-size:.85rem;line-height:1.5;margin:0 0 .75rem;padding:.7rem .8rem;background:#F5F7FA;border-radius:8px;">
+      <strong>Your subscription:</strong> <span id="ckSummary"></span> Renews automatically until you cancel. Cancel any time from the <a href="https://billing.stripe.com/p/login/4gM14oehU2NkdBfcH06J200" target="_blank" rel="noopener">billing portal</a> or by emailing legal@thearenahub.co.uk; you keep access until the end of the period you have paid for.
+    </div>
+    <label class="checkout-modal__check" style="display:flex;gap:.5rem;font-size:.85rem;line-height:1.45;margin-bottom:.6rem;cursor:pointer;"><input type="checkbox" id="ckTerms" style="margin-top:.2rem;flex:none;"><span>I have read and agree to the <a href="terms.html" target="_blank" rel="noopener">Terms</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
+    <label class="checkout-modal__check" style="display:flex;gap:.5rem;font-size:.85rem;line-height:1.45;margin-bottom:.6rem;cursor:pointer;"><input type="checkbox" id="ckImmediate" style="margin-top:.2rem;flex:none;"><span>I want Arena Lite to start straight away. If I am buying as a consumer, I understand I can still cancel within 14 days but will then pay for the part of the service I have used.</span></label>
     <div class="checkout-modal__status" id="checkoutModalStatus"></div>
 
     <div class="checkout-modal__actions">
@@ -2984,6 +2989,7 @@ function toggleBilling() {
 }
 
 function openCheckout() {
+  document.getElementById('ckSummary').textContent = (_billingPeriod === 'annual') ? 'Arena Lite, annual plan: \u00a3135 for the first year (Founder price; \u00a3180 standard).' : 'Arena Lite, monthly plan: \u00a314.99 a month (Founder price; \u00a319.99 standard).';
   document.getElementById('checkoutModal').classList.add('is-open');
   hideCheckoutError();
 }
@@ -3023,6 +3029,9 @@ function submitCheckout() {
   if (!email || email.indexOf('@') === -1) { document.getElementById('ckEmail').classList.add('err'); ok = false; }
   if (!orgName)   { document.getElementById('ckOrgName').classList.add('err');   ok = false; }
   if (!ok) { showCheckoutError('Please fill in all fields.'); return; }
+  if (!document.getElementById('ckTerms').checked || !document.getElementById('ckImmediate').checked) {
+    showCheckoutError('Please tick both boxes to continue.'); return;
+  }
 
   _checkoutSubmitting = true;
   var btn = document.getElementById('checkoutSubmitBtn');
@@ -3038,7 +3047,8 @@ function submitCheckout() {
       practitionerName: (firstName + ' ' + lastName).trim(),
       plan: _billingPeriod,
       product: PRODUCT,
-      priceId: PRICE_IDS[_billingPeriod]
+      priceId: PRICE_IDS[_billingPeriod],
+      acceptTerms: true, immediateStart: true, termsVersion: 'LITE-TERMS-2026-11-12'
     })
   })
   .then(function(res) { return res.json(); })
